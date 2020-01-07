@@ -1,0 +1,198 @@
+*{
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+.box{
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+	position: relative;
+	background: #fff;
+}
+/* 头部 */
+.hello{
+	width: 100%;
+	height: 2.3rem;
+}
+.hello img{
+	width: 100%;
+	height: 2.3rem;
+}
+/* logo */
+.logo{
+	width: 100%;
+	height: auto;
+	overflow: hidden;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	padding: 0.78rem 0;
+	padding-bottom: 1rem;
+}
+.logo img{
+	width: 1.4rem;
+	height: 1.4rem;
+}
+/* 账号 */
+.Account{
+	width:80%;
+	height: 0.88rem;
+	overflow: hidden;
+	border: 1px solid #d2d2d2;
+	border-radius: 0.5rem;
+	margin: 0 auto;
+	display: flex;
+	box-sizing: border-box;
+	padding-left:0.5rem;
+	align-items: center;
+}
+.Account .text{
+	width: 1rem;
+	height: auto;
+	font-family: '微软雅黑';
+	font-size: 0.32rem;
+	color: #313131;
+	font-weight: bold;
+}
+.Account input{
+	flex: 1;
+	height: 100%;
+	border: none;
+	box-shadow: none;
+	outline: none;
+	font-family: '微软雅黑';
+	font-size: 0.25rem;
+	color: #000;
+}
+.Account input::-webkit-input-placeholder { /* WebKit, Blink, Edge */
+    color: #999;
+	font-size: 0.25rem;
+}
+.Account input:-moz-placeholder { /* Mozilla Firefox 4 ~ 18 */
+   color: #999;
+   font-size: 0.25rem;
+}
+.Account input::-moz-placeholder { /* Mozilla Firefox 19+ */
+   color: #999;
+   font-size: 0.25rem;
+}
+.Account input:-ms-input-placeholder { /* Internet Explorer 10 ~ 11 */
+   color: #999;
+   font-size: 0.25rem;
+}
+.Account input::-ms-input-placeholder { /* Microsoft Edge */
+   color: #999;
+   font-size: 0.25rem;
+}
+/* 密码 */
+.Password{
+	width:80%;
+	height: 0.88rem;
+	overflow: hidden;
+	border: 1px solid #d2d2d2;
+	border-radius: 0.5rem;
+	margin: 0 auto;
+	display: flex;
+	box-sizing: border-box;
+	padding-left:0.5rem;
+	align-items: center;
+	margin-top: 0.78rem;
+}
+.Password .text{
+	width: 1rem;
+	height: auto;
+	font-family: '微软雅黑';
+	font-size: 0.32rem;
+	color: #313131;
+	font-weight: bold;
+}
+.Password input{
+	flex: 1;
+	height: 100%;
+	border: none;
+	box-shadow: none;
+	outline: none;
+	font-family: '微软雅黑';
+	font-size: 0.25rem;
+	color: #000;
+}
+.Password input::-webkit-input-placeholder { /* WebKit, Blink, Edge */
+    color: #999;
+	font-size: 0.25rem;
+}
+.Password input:-moz-placeholder { /* Mozilla Firefox 4 ~ 18 */
+   color: #999;
+   font-size: 0.25rem;
+}
+.Password input::-moz-placeholder { /* Mozilla Firefox 19+ */
+   color: #999;
+   font-size: 0.25rem;
+}
+.Password input:-ms-input-placeholder { /* Internet Explorer 10 ~ 11 */
+   color: #999;
+   font-size: 0.25rem;
+}
+.Password input::-ms-input-placeholder { /* Microsoft Edge */
+   color: #999;
+   font-size: 0.25rem;
+}
+
+/* 忘记密码 */
+.forget{
+	width: 100%;
+	height: auto;
+	overflow: hidden;
+	padding: 0 10%;
+	box-sizing: border-box;
+	text-align: right;
+	font-family: '微软雅黑';
+	font-size: 0.27rem;
+	color: #999999;
+	margin: 0.7rem 0;
+}
+/* 按钮 */
+.btnbox{
+	width: 100%;
+	height: auto;
+	overflow: hidden;
+	display: flex;
+	box-sizing: border-box;
+	justify-content: center;
+	align-items: center;
+}
+.btnbox button{
+	width: 80%;
+	height: auto;
+	overflow: hidden;
+	border: none;
+	border-radius: 0.5rem;
+	font-family: '微软雅黑';
+	display: flex;
+	box-sizing: border-box;
+	justify-content: center;
+	align-items: center;
+	font-size: 0.36rem;
+	color: #fff;
+	padding:0.26rem 0;
+	outline: none;
+	background: -webkit-linear-gradient(left, #295aff , #4cb1f9); /* Safari 5.1 - 6.0 */  
+	background: -o-linear-gradient(right, #295aff, #4cb1f9); /* Opera 11.1 - 12.0 */  
+	background: -moz-linear-gradient(right, #295aff, #4cb1f9); /* Firefox 3.6 - 15 */  
+	background: linear-gradient(to right, #295aff , #4cb1f9); /* 标准的语法 */
+}
+/* 尾部 */
+.footer{
+	width: 100%;
+	height: auto;
+	overflow: hidden;
+	position: absolute;
+	bottom: 0.8rem;
+	left: 0;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-family: '微软雅黑';
+	font-size: 0.24rem;
+	color: #a4a4a4;
+}

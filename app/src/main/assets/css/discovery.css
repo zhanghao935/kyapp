@@ -66,6 +66,8 @@ body{
 	height: 1rem;
 	line-height: 1rem;
 	margin-bottom: 1px;
+	position: fixed;
+	z-index: 999;
 }
 .tab ul{
 	width: 100%;
@@ -81,6 +83,12 @@ body{
 	list-style: none;
 	cursor: pointer;
 	color: #999;
+}
+.tab-one{
+	margin-top: 1rem;
+}
+.tab-two{
+	margin-top: 1rem;
 }
 .contentone{
 	width: 100%;
@@ -175,6 +183,24 @@ body{
     background: none;
     }
 
+/*无数据图片*/
+.imgbox{
+    width:100%;
+    height:auto;
+    overflow:hidden;
+	text-align: center;
+	margin-top:40%;
+ }
+.imgbox img{
+	width: 35%;
+}
+.nodata{
+    font-size:0.32rem;
+    color:#747b88;
+}
+.hide{
+	display: none;
+}
 
 
 
