@@ -31,18 +31,18 @@
 						<div class="xing">*</div>
 						<div class="fromleft">案件名称</div>
 						<div class="fromright">
-							<input type="text" placeholder="请输入案件名称">
+							<input type="text" placeholder="请输入案件名称" id="caseName">
 						</div>
 					</div>
 					<div class="frombox">
 						<div class="xing">*</div>
 						<div class="fromleft">案件类型</div>
 						<div class="fromright">
-							<select name="">
-								<option value="请选择案件类型">请选择案件类型</option>
-								<option value="盗窃案">盗窃案</option>
-								<option value="抢劫案">抢劫案</option>
-								<option value="故意伤害案">故意伤害案</option>
+							<select name="" id="caseType">
+								<!--<option value="请选择案件类型">请选择案件类型</option>-->
+								<!--<option value="盗窃案">盗窃案</option>-->
+								<!--<option value="抢劫案">抢劫案</option>-->
+								<!--<option value="故意伤害案">故意伤害案</option>-->
 							</select>
 							<img src="../img/right.png" alt="" class="jump">
 						</div>
@@ -101,6 +101,7 @@
 		})
 		
 		$(function() {
+			getCaseType();
 			setheight();
 			map();
 			var people = $.cookie('people');
@@ -112,7 +113,7 @@
 			setheight();
 			map();
 		});
-
+		
 		function setheight() {
 			var h1 = $(window).height();
 			var h2 = $(".title").height();
@@ -126,7 +127,19 @@
 		$(".jumptwo").click(function() {
 			window.location.href = "selectpeopletwo.html";
 		})
-		
+		//获取所有案件类型
+		function getCaseType() {
+			var result=$.postData('/apis/caseType/findAll')
+			console.log(result)
+			if(result.status){
+				var data=result.data;
+				var str="";
+				$(data).each(function (index,obj) {
+					str+='<option value="'+obj.id+'">'+obj.caseName+'</option>';
+				})
+				$('#caseType').html(str);
+			}
+		}
 		// 地图定位
 		/*定位高德地图*/
 		function map() {
