@@ -46,8 +46,6 @@ public class JavaScriptInterface {
             System.out.println(response.body().string());
             return response.body().string();
         }
-
-
     }
 
     /**

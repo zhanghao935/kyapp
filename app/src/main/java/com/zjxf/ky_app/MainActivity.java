@@ -49,6 +49,7 @@ public class MainActivity extends AppCompatActivity implements KeyEvent.Callback
                 return Boolean.TRUE;
             }
         });
+        inquestWb.setWebContentsDebuggingEnabled(Boolean.TRUE);
         inquestWb.setWebViewClient(new WebViewClient() {
             @Override
             public boolean shouldOverrideUrlLoading(WebView view, String url) {
@@ -63,13 +64,13 @@ public class MainActivity extends AppCompatActivity implements KeyEvent.Callback
             }
         });
         WebSettings settings = inquestWb.getSettings();
-        settings.setCacheMode(WebSettings.LOAD_NO_CACHE);
+        settings.setDomStorageEnabled(Boolean.TRUE);
         settings.setJavaScriptEnabled(Boolean.TRUE);
         if (isAllScreen) {
             getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         }
         inquestWb.addJavascriptInterface(new JavaScriptInterface(this), "zjxf");
-        inquestWb.loadUrl("file:///android_asset/html/discovery.html");
+        inquestWb.loadUrl("file:///android_asset/html/login.html");
     }
 
     /**
