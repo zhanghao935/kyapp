@@ -37,7 +37,6 @@ public class JavaScriptInterface {
         JSONObject paramJson = JSONObject.parseObject(msg);
         String url = paramJson.getString("url");
         Map<String, Object> paramMap = paramJson.getJSONObject("param").getInnerMap();
-        String success = paramJson.getString("success");
         Response response = OkHttpUtils.getInstance().postData("http://192.168.0.139:8629" + url, paramMap);
         return response.body().string();
     }

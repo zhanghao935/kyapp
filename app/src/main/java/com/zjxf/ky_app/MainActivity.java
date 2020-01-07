@@ -67,7 +67,7 @@ public class MainActivity extends AppCompatActivity implements KeyEvent.Callback
         if (isAllScreen) {
             getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         }
-        inquestWb.addJavascriptInterface(new JavaScriptInterface(this), "android");
+        inquestWb.addJavascriptInterface(new JavaScriptInterface(this), "zjxf");
         inquestWb.loadUrl("file:///android_asset/html/discovery.html");
     }
 
@@ -86,6 +86,5 @@ public class MainActivity extends AppCompatActivity implements KeyEvent.Callback
         }
         return Boolean.FALSE;
     }
-
 
 }
