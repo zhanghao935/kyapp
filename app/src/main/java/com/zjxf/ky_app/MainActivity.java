@@ -63,6 +63,7 @@ public class MainActivity extends AppCompatActivity implements KeyEvent.Callback
             }
         });
         WebSettings settings = inquestWb.getSettings();
+        settings.setCacheMode(WebSettings.LOAD_NO_CACHE);
         settings.setJavaScriptEnabled(Boolean.TRUE);
         if (isAllScreen) {
             getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
