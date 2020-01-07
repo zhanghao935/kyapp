@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+		<title>勘验取证</title>
+
+		<link rel="stylesheet" type="text/css" href="../css/discovery.css" />
+
+		<script src="../js/jquery.min.js"></script>
+		<script src="../js/common.js"></script>
+	</head>
+
+	<body>
+		<div class="wrapper">
+			<div class="title">
+				<span class="t-img"><img src="../img/return.png"/></span>
+				<span class="t-text">勘验取证</span>
+				<span class="t-img add"><a href="addcase.html"><img src="../img/add.png"/></a></span>
+			</div>
+			<div class="content">
+				<div class="tab">
+					<ul>
+						<li class="tabone"><span class="active">取证中</span></li>
+						<li class="tabtwo"><span>已取证</span></li>
+					</ul>
+				</div>
+				<div class="tab-one">
+					<div class="contentone">
+						<div class="onebox">
+							<div class="c-title">名称：某企业非法污染</div>
+							<div class="c-content">
+								<span>说明内容：内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容</span>
+							</div>
+							<div class="place"><img src="../img/place.png" />&nbsp;&nbsp;万柏林区西矿街西中环路口万新商务</div>
+							<div class="c-name">
+								<span>龙傲天</span>
+								<span>龙娇娇</span>
+							</div>
+						</div>
+					</div>
+					<div class="contentone">
+						<div class="onebox">
+							<div class="c-title">名称：某企业非法污染</div>
+							<div class="c-content">
+								<span>说明内容：内容容内容内容内容内容内容内容</span>
+							</div>
+							<div class="place"><img src="../img/place.png" />&nbsp;&nbsp;万柏林区西矿街西中环路口万新商务</div>
+							<div class="c-name">
+								<span>龙傲天</span>
+								<span>龙娇娇</span>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="tab-two hide">
+					<div class="contentone">
+						<div class="onebox">
+							<div class="c-title">名称：某企业严重污染啊啊啊啊</div>
+							<div class="c-content">
+								<span>说明内容：内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容</span>
+							</div>
+							<div class="place"><img src="../img/place.png" />&nbsp;&nbsp;万柏林区西矿街西中环路口万新商务</div>
+							<div class="c-name">
+								<span>龙傲天</span>
+								<span>龙娇娇</span>
+							</div>
+						</div>
+					</div>
+					<div class="contentone">
+						<div class="onebox">
+							<div class="c-title">名称：某企业非法污染</div>
+							<div class="c-content">
+								<span>说明内容：内容内容内容容内容内容内容</span>
+							</div>
+							<div class="place"><img src="../img/place.png" />&nbsp;&nbsp;万柏林区西矿街西中环路口万新商务</div>
+							<div class="c-name">
+								<span>龙傲天</span>
+								<span>龙娇娇</span>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+	<script type="text/javascript">
+		$(".tabone").click(function() {
+			$(this).children("span").addClass("active").parent().siblings().children("span").removeClass("active");
+			$(".tab-two").hide();
+			$(".tab-one").show();
+		})
+		$(".tabtwo").click(function() {
+			$(this).children("span").addClass("active").parent().siblings().children("span").removeClass("active");
+			$(".tab-two").show();
+			$(".tab-one").hide();
+		})
+
+		$(".tab-one .contentone").click(function() {
+			window.location.href = "obtain.html";
+		})
+		$(".tab-two .contentone").click(function() {
+			window.location.href = "air.html";
+		})
+
+		$(function() {
+			setheight();
+		});
+		$(window).resize(function() {
+			setheight();
+		});
+
+		function setheight() {
+			var h1 = $(window).height();
+			var h2 = $(".title").height();
+			var h3 = h1 - h2;
+			$(".wrapper").css("height", h1);
+			$(".content").css("height", h3);
+		}
+	</script>
+
+</html>

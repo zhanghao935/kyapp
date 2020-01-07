@@ -1,0 +1,77 @@
+
+.fromright{
+	color: #999999;
+	font-size: 0.28rem;
+	display: flex;
+    align-items: center;
+}
+.address{
+	padding: 0.25rem 0; 
+}
+.Explaintitle{
+	color: #2b58cb;
+}
+.imgbox{
+	border: 1px solid #c3dafc;
+	border-radius: 4px;
+	overflow: hidden;
+	margin:15px 0;
+}
+.box-a{
+	font-size: 0.28rem;
+	float: left;
+	width: 33%;
+	height: 2rem;
+	line-height: 0.5rem;
+	text-align: center;
+	border-bottom: 1px solid #c3dafc;
+	border-right: 1px solid #c3dafc;
+}
+.box-a:nth-child(3n){
+	border-right: none;
+}
+.box-a:nth-child(4){
+	border-bottom: none;
+}
+.box-a:nth-child(5){
+	border-bottom: none;
+}
+.box-a:nth-child(6){
+	border-bottom: none;
+}
+.box-a:nth-child(3) img{
+	width: 0.4rem;
+	height: 0.45rem;
+}
+.box-a p{
+	margin: 0;
+}
+.box-a p:first-child{
+	margin-top: 0.5rem;
+}
+.box-a p img{
+	width: 0.5rem;
+}
+
+/* 按钮 */
+.buttonboxs{
+	width: 100%;
+	height: auto;
+	overflow: hidden;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin:0.6rem 0;
+}
+.buttonboxs button{
+	font-family: '微软雅黑';
+	font-size: 0.3rem;
+	color: #fff;
+	padding: 0.15rem 0.6rem;
+	text-align: center;
+	border: 0.01rem solid #5a9bfc;
+	background: #5a9bfc;
+	border-radius: 0.1rem;
+	outline: none;
+	cursor: pointer;
+}

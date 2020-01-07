@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+		<title>空气</title>
+
+		<link rel="stylesheet" type="text/css" href="../css/discovery.css" />
+		<script src="../js/jquery.min.js"></script>
+		<script src="../js/common.js"></script>
+	</head>
+
+	<body>
+		<div class="wrapper">
+			<div class="title">
+				<span class="t-text">空气</span>
+				<span class="t-img add"><a href="addcase.html"><img src="../img/add.png"/></a></span>
+			</div>
+			<div class="content">
+				<div class="tab-one">
+					<div class="contentone">
+						<div class="onebox">
+							<div class="c-content">
+								<span>说明内容：内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容</span>
+							</div>
+							<div class="date">2019-12-25 14:12：00</div>
+							<div class="c-name">
+								<span>龙傲天</span>
+								<span>龙娇娇</span>
+							</div>
+						</div>
+					</div>
+					<div class="contentone">
+						<div class="onebox">
+							<div class="c-content">
+								<span>说明内容：内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容</span>
+							</div>
+							<div class="date">2019-12-25 14:12：00</div>
+							<div class="c-name">
+								<span>龙傲天</span>
+								<span>龙娇娇</span>
+							</div>
+						</div>
+					</div>
+					<div class="contentone">
+						<div class="onebox">
+							<div class="c-content">
+								<span>说明内容：内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容</span>
+							</div>
+							<div class="date">2019-12-25 14:12：00</div>
+							<div class="c-name">
+								<span>龙傲天</span>
+								<span>龙娇娇</span>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+	<script type="text/javascript">
+	    $(".contentone").click(function(){
+	    	window.location.href="addSoil.html"
+	    })
+		$(function() {
+			setheight();
+		});
+		$(window).resize(function() {
+			setheight();
+		});
+
+		function setheight() {
+			var h1 = $(window).height();
+			var h2 = $(".title").height();
+			var h3 = h1 - h2;
+			$(".wrapper").css("height", h1);
+			$(".content").css("height", h3);
+		}
+	</script>
+
+</html>

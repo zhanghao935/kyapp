@@ -1,0 +1,96 @@
+*{
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+.wrapper{
+	width: 100%;
+	height: auto;
+}
+/*头部*/
+.title{
+	width: 100%;
+	height: 0.9rem;
+	background: #438cf2;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	color: #fff;
+	overflow: hidden;
+	padding: 0 0.3rem;
+	box-sizing: border-box;
+}
+.title img{
+	width: 0.32rem;
+	height: 0.32rem;
+}
+.title .t-text{
+	flex: 1;
+	font-family: '微软雅黑';
+	font-size: 0.36rem;
+	color: #fff;
+	display: flex;
+	justify-content: center;
+	align-content: center;
+}
+/* 内容开始 */
+.content{
+	width: 100%;
+	height: auto;
+	overflow: hidden;
+	background: #fff;
+}
+
+.lefts{
+	width: 20%;
+	height: 100%;
+	float: left;
+	background: #eaeaea;
+	overflow-y: auto;
+}
+.lefts .list{
+	float: left;
+	width: 100%;
+	padding:0.4rem 0;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-family: '微软雅黑';
+	font-size: 0.28rem;
+	color: #000000;
+	cursor: pointer;
+	box-sizing: border-box;
+}
+.lefts .list:hover{
+	background: #fff;
+	border-left: 5px solid #438cf2;
+	color:#438cf2;
+}
+.lefts .active{
+	background: #fff;
+	border-left: 5px solid #438cf2;
+	color:#438cf2;
+}
+.rights{
+	width: 80%;
+	height: 100%;
+	float: left;
+	background: #fff;
+}
+.rights .rightcontent{
+	width: 100%;
+	height: 100%;
+	overflow: auto;
+	font-family: '微软雅黑';
+	font-size: 0.28rem;
+	color: #000000;
+	cursor: pointer;
+	box-sizing: border-box;
+}
+.rightcontent .rightli{
+	width: 100%;
+	padding:0.4rem 1rem;
+	cursor: pointer;
+	box-sizing: border-box;
+	border-bottom: 0.01rem solid #ebebeb;
+}

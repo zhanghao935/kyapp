@@ -1,0 +1,127 @@
+.tablebox{
+	font-size: 0.28rem;
+	padding: 0.4rem 0.25rem;
+}
+.tablebox select{
+	margin-bottom: 0.3rem;
+	border-radius: 4px;
+	border-color: #ddd;
+	padding: 0.08rem;
+}
+.tablebox table{
+	font-size: 0.2rem;
+}
+.tablebox table thead tr th{
+	font-weight: normal;
+	border-bottom-width: 1px;
+	vertical-align:middle;
+	text-align: center;
+}
+.tablebox table tbody tr td{
+	vertical-align:middle;
+	text-align: center;
+}
+.tablebox table tbody tr td input{
+	border: none;
+	width: 80%;
+}
+
+/* 按钮 */
+.buttonboxs{
+	width: 100%;
+	height: auto;
+	overflow: hidden;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin: 0.2rem 0; 
+}
+.buttonboxs button{
+	font-family: '微软雅黑';
+	font-size: 0.36rem;
+	color: #fff;
+	padding: 0.15rem 0.8rem;
+	text-align: center;
+	border: 0.01rem solid #438cf2;
+	background: #438cf2;
+	border-radius: 0.1rem;
+	outline: none;
+	cursor: pointer;
+}
+.hege{
+	color: blue;
+}
+.false{
+	color: red;
+}
+.fenxi{
+	background: #f8f8f8;
+	min-height: 0.8rem;
+	padding: 0.3rem;
+}
+.fenxi span{
+	color: #3d9b20;
+}
+
+
+/*证据材料*/
+.cailiao{
+	padding: 0 0.4rem;
+	margin: 0.25rem 0;
+	overflow: hidden;
+}
+.imgbox{
+	width: 30.2%;
+	height: 2rem;
+	float: left;
+	margin: 0.1rem;
+}
+.imgbox img{
+	width: 90%;
+	height: 90%;
+	border-radius: 4px;
+}
+
+.dropdown-menu{
+	right: -0.25rem;
+	left: auto;
+	min-width:100px;
+}
+
+
+/* 选择勘验类型 */
+.inspection{
+	width: 70%;
+	height: 0.5rem;
+	padding-left: 0.2rem;
+	text-align: left;
+	line-height: 0.5rem;
+	border:1px solid #dadada;
+	border-radius: 0.1rem;
+	font-family: '微软雅黑';
+	font-size: 0.24rem;
+	color: #333333;
+	position: relative;
+}
+.inspection img{
+	position: absolute;
+	top: 0.14rem;
+	right: 0.2rem;
+	width: 0.14rem;
+	height: 0.22rem;
+}
+
+.picker-title{
+	font-family: '微软雅黑';
+	font-size: 0.30rem !important;
+	color: #333333;
+}
+.picker .picker-panel .wheel-wrapper .wheel{
+	font-family: '微软雅黑';
+	font-size: 0.30rem !important;
+	color: #333333;
+}
+.picker .picker-panel .picker-choose .confirm{
+	right: 0;
+	color: #438cf2 !important;
+}
