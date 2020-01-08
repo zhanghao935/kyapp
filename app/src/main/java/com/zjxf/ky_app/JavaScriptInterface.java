@@ -3,15 +3,13 @@ package com.zjxf.ky_app;
 
 import android.content.Context;
 import android.webkit.JavascriptInterface;
-
 import com.alibaba.fastjson.JSONObject;
 import com.zjxf.ky_app.utils.OkHttpUtils;
+import okhttp3.Response;
 
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
-
-import okhttp3.Response;
 
 /**
  * created with IntelliJ IDEA
