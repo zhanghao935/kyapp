@@ -28,34 +28,25 @@
             </ul>
         </div>
         <div class="tab-one" id="div_tap_0">
+            <div class='imgbox'><img src='../img/loadding.gif'>
+                <div class='nodata'>拼命加载中...</div>
+            </div>
         </div>
 
         <div class="tab-two hide" id="div_tap_1">
-
+            <div class='imgbox'><img src='../img/loadding.gif'>
+                <div class='nodata'>拼命加载中...</div>
+            </div>
         </div>
     </div>
 </div>
 </body>
 <script type="text/javascript">
-    $(".tabone").click(function () {
-        $(this).children("span").addClass("active").parent().siblings().children("span").removeClass("active");
-        $(".tab-two").hide();
-        $(".tab-one").show();
-    });
-    $(".tabtwo").click(function () {
-        $(this).children("span").addClass("active").parent().siblings().children("span").removeClass("active");
-        $(".tab-two").show();
-        $(".tab-one").hide();
-    });
 
-    $(".tab-one .contentone").click(function () {
-        window.location.href = "obtain.html";
-    });
-    $(".tab-two .contentone").click(function () {
-        window.location.href = "air.html";
-    });
+    var timeout;
 
     $(function () {
+        initScript();
         setheight();
     });
     $(window).resize(function () {
@@ -73,42 +64,72 @@
     getData(0);//初始化加载取证中数据
 
     function getData(state) {
-        
-        var postData = $.postData("/apis/app/case/findAllPage", {
-            "state": state,
-            "pageSize": 5,
-            "pageNum": 1
-        });
-
-        var contentStr = "";
-        if (postData.data.rows.length !== 0) {
-            $.each(postData.data.rows, function (i, obj) {
-                contentStr += "<div class=\"contentone\">\n" +
-                    "                <div class=\"onebox\">\n" +
-                    "                    <div class=\"c-title\">名称：" + obj.caseName + "</div>\n" +
-                    "                    <div class=\"c-content\">\n" +
-                    "                        <span>说明内容：" + obj.explains + "</span>\n" +
-                    "                    </div>\n" +
-                    "                    <div class=\"place\"><img src=\"../img/place.png\"/>&nbsp;&nbsp;" + obj.address + "\n" +
-                    "                    </div>\n" +
-                    "                    <div class=\"c-name\">\n";
-
-                $.each(obj.togetherEvidenceUserId, function (j, ooj) {
-                    contentStr += "                        <span>" + ooj + "</span>\n";
-                });
-
-                contentStr += "                    </div>\n" +
-                    "                </div>\n" +
-                    "            </div>";
-
-            });
-        } else {
-            contentStr += "<div class='imgbox'><img src='../img/nodata.png' > <div class='nodata'>暂无数据</div></div>";
+        if (timeout !== undefined && timeout != null) {
+            clearTimeout(timeout);
         }
-        $("#div_tap_" + state).html(contentStr);
+
+        timeout = setTimeout(function () {
+
+            let postData = $.postData("/apis/app/case/findAllPage", {
+                "state": state,
+                "pageSize": 5,
+                "pageNum": 1
+            });
+
+            let contentStr = "";
+            if (postData.data.rows.length !== 0) {
+                $.each(postData.data.rows, function (i, obj) {
+                    contentStr += "<div class=\"contentone\" data_id='" + obj.id + "'>\n" +
+                        "                <div class=\"onebox\">\n" +
+                        "                    <div class=\"c-title\">名称：" + obj.caseName + "</div>\n" +
+                        "                    <div class=\"c-content\">\n" +
+                        "                        <span>说明内容：" + obj.explains + "</span>\n" +
+                        "                    </div>\n" +
+                        "                    <div class=\"place\"><img src=\"../img/place.png\"/>&nbsp;&nbsp;" + obj.address + "\n" +
+                        "                    </div>\n" +
+                        "                    <div class=\"c-name\">\n";
+
+                    $.each(obj.togetherEvidenceUserId, function (j, ooj) {
+                        contentStr += "                        <span>" + ooj + "</span>\n";
+                    });
+
+                    contentStr += "                    </div>\n" +
+                        "                </div>\n" +
+                        "            </div>";
+
+                });
+            } else {
+                contentStr += "<div class='imgbox'><img src='../img/nodata.png' > <div class='nodata'>暂无数据</div></div>";
+            }
+            $("#div_tap_" + state).html(contentStr);
+            initClick();
+        }, 100);
+
+
     }
 
 
+    function initScript() {
+        $(".tabone").click(function () {
+            $(this).children("span").addClass("active").parent().siblings().children("span").removeClass("active");
+            $(".tab-two").hide();
+            $(".tab-one").show();
+        });
+        $(".tabtwo").click(function () {
+            $(this).children("span").addClass("active").parent().siblings().children("span").removeClass("active");
+            $(".tab-two").show();
+            $(".tab-one").hide();
+        });
+    }
+
+    function initClick() {
+        $(".tab-one .contentone").click(function () {
+            window.location.href = "obtain.html?id=" + $(this).attr("data_id");
+        });
+        $(".tab-two .contentone").click(function () {
+            window.location.href = "air.html?id=" + $(this).attr("data_id");
+        });
+    }
 
 </script>
 

@@ -9,13 +9,14 @@
         android:allowBackup="false"
         android:icon="@mipmap/app_logo_ky"
         android:label="@string/app_name"
+        android:networkSecurityConfig="@xml/network_config"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
-        tools:ignore="GoogleAppIndexingWarning">
+        tools:ignore="GoogleAppIndexingWarning"
+        tools:targetApi="n">
         <meta-data
             android:name="com.google.android.actions"
-            android:networkSecurityConfig="@xml/network_config"
             android:resource="@xml/network_config"
             tools:targetApi="n" />
 
