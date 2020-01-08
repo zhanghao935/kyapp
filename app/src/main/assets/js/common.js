@@ -30,6 +30,15 @@
             $(paramJson).attr("param", data);
             let postData = window.zjxf.postData(JSON.stringify(paramJson));
             return JSON.parse(postData);
+        };
+        $.showToast = function (message) {
+            window.zjxf.showToast(message);
+        };
+        $.getUrlParam = function (name) {
+            var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+            var r = window.location.search.substr(1).match(reg);
+            if (r != null) return unescape(r[2]);
+            return null;
         }
     })(jQuery);
 

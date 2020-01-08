@@ -2,14 +2,18 @@ package com.zjxf.ky_app;
 
 
 import android.content.Context;
+import android.view.Gravity;
 import android.webkit.JavascriptInterface;
+import android.widget.Toast;
+
 import com.alibaba.fastjson.JSONObject;
 import com.zjxf.ky_app.utils.OkHttpUtils;
-import okhttp3.Response;
 
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
+
+import okhttp3.Response;
 
 /**
  * created with IntelliJ IDEA
@@ -58,6 +62,18 @@ public class JavaScriptInterface {
     @JavascriptInterface
     public void getData(String msg) {
         System.out.println(msg);
+    }
+
+    /**
+     * android toast
+     *
+     * @param msg 参数信息
+     */
+    @JavascriptInterface
+    public void showToast(String msg) {
+        Toast toast = Toast.makeText(context, msg, Toast.LENGTH_SHORT);
+        toast.setGravity(Gravity.CENTER, 0, 0);
+        toast.show();
     }
 
 
