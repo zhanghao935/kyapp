@@ -129,7 +129,7 @@
 		})
 		//获取所有案件类型
 		function getCaseType() {
-			var result=$.postData('/apis/caseType/findAll')
+			var result=$.postData('/apis/caseType/findAll',{})
 			console.log(result)
 			if(result.status){
 				var data=result.data;

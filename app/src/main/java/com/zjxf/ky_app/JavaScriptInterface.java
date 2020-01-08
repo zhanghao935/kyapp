@@ -40,11 +40,11 @@ public class JavaScriptInterface {
             Map<String, Object> paramMap = paramJson.getJSONObject("param").getInnerMap();
             Response response = OkHttpUtils.getInstance().postData("http://192.168.0.139:8629" + url, paramMap);
             System.out.println(response.body().string());
-            return response.body().string();
+            return response.body().toString();
         } else {
             Response response = OkHttpUtils.getInstance().postData("http://192.168.0.139:8629" + url, new HashMap<String, Object>());
             System.out.println(response.body().string());
-            return response.body().string();
+            return response.body().toString();
         }
     }
 

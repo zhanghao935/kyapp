@@ -6,7 +6,6 @@ import android.os.Handler;
 import android.os.Message;
 import android.view.Window;
 import android.view.WindowManager;
-
 import androidx.appcompat.app.AppCompatActivity;
 
 public class SplashActivity extends AppCompatActivity {
@@ -31,7 +30,7 @@ public class SplashActivity extends AppCompatActivity {
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
-        setContentView(R.layout.activity_splash);
+        setContentView(com.zjxf.ky_app.R.layout.activity_splash);
         // 调用handler的sendEmptyMessageDelayed方法
         handler.sendEmptyMessageDelayed(WHAT_DELAY, DELAY_TIME);
     }

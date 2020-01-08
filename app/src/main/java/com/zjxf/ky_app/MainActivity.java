@@ -4,12 +4,7 @@ import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.WindowManager;
-import android.webkit.JsResult;
-import android.webkit.WebChromeClient;
-import android.webkit.WebSettings;
-import android.webkit.WebView;
-import android.webkit.WebViewClient;
-
+import android.webkit.*;
 import androidx.appcompat.app.AppCompatActivity;
 
 import static android.webkit.WebSettings.LayoutAlgorithm.SINGLE_COLUMN;
@@ -28,7 +23,7 @@ public class MainActivity extends AppCompatActivity implements KeyEvent.Callback
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(com.zjxf.ky_app.R.layout.activity_main);
         AndroidBug5497Workaround.assistActivity(this);
         initWebView(Boolean.FALSE);
     }
@@ -39,7 +34,7 @@ public class MainActivity extends AppCompatActivity implements KeyEvent.Callback
      * @param isAllScreen 是否全屏
      */
     public void initWebView(Boolean isAllScreen) {
-        inquestWb = findViewById(R.id.inquest_wb);
+        inquestWb = findViewById(com.zjxf.ky_app.R.id.inquest_wb);
         inquestWb.getSettings().setLayoutAlgorithm(SINGLE_COLUMN);
         inquestWb.getSettings().setLoadWithOverviewMode(Boolean.TRUE);
         inquestWb.setLongClickable(Boolean.TRUE);
@@ -49,7 +44,7 @@ public class MainActivity extends AppCompatActivity implements KeyEvent.Callback
                 return Boolean.TRUE;
             }
         });
-        inquestWb.setWebContentsDebuggingEnabled(Boolean.TRUE);
+        WebView.setWebContentsDebuggingEnabled(Boolean.TRUE);
         inquestWb.setWebViewClient(new WebViewClient() {
             @Override
             public boolean shouldOverrideUrlLoading(WebView view, String url) {
