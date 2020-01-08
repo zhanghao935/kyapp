@@ -1,155 +1,174 @@
 <!DOCTYPE html>
 <html lang="zh">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<meta http-equiv="X-UA-Compatible" content="ie=edge" />
-		<title>线索取证</title>
-		
-		<link rel="stylesheet" type="text/css" href="../css/addcase.css" />
-		<link rel="stylesheet" type="text/css" href="../css/obtain.css" />
-		<script src="../js/jquery.min.js"></script>
-		<script src="../js/common.js"></script>
-		
-		<link rel="stylesheet" type="text/css" href="../css/alert.css"/>
-		<script src="../js/alertPopShow.js"></script>
-	</head>
-	<body>
-		<div class="wrapper">
-			<div class="title">
-				<img src="../img/return.png" onclick="javascript:history.back(-1);"/>
-				<span class="t-text">线索取证</span>
-			</div>
-			<div class="content">
-				<div class="jiange"></div>
-				<div class="databox">
-					<div class="frombox">
-						<div class="fromleft">案件名称</div>
-						<div class="fromright">
-							<span>某企业非法排污</span>
-						</div>
-					</div>
-					<div class="frombox">
-						<div class="fromleft">案件类型</div>
-						<div class="fromright">
-							<span>生态与资源保护</span>
-						</div>
-					</div>
-					<div class="frombox">
-						<div class="fromleft">取证人</div>
-						<div class="fromright">
-							<span>检察官</span>
-						</div>
-					</div>
-					<div class="frombox">
-						<div class="fromleft minheight">取证地点</div>
-						<div class="fromright">
-							<span class="address">四川省成都市高新区城区 天府大道北段天府软件园 X区</span>
-						</div>
-					</div>
-				</div>
-				<div class="jiange"></div>
-				<div class="Explain">
-					<div class="Explaintitle">取证方式</div>
-					<div class="imgbox">
-						<div class="box-a video">
-							<p><img src="../img/img.png"/></p>
-							<p>图片</p>
-						</div>
-						<div class="box-a video">
-							<p><img src="../img/video.png"/></p>
-							<p>视频</p>
-						</div>
-						<div class="box-a video">
-							<p><img src="../img/music.png"/></p>
-							<p>音频</p>
-						</div>
-						<div class="box-a water">
-							<p><img src="../img/water.png"/></p>
-							<p>水</p>
-						</div>
-						<div class="box-a water">
-							<p><img src="../img/tu.png"/></p>
-							<p>土壤</p>
-						</div>
-					</div>
-				</div>
-				<div class="buttonboxs">
-					<button type="button" class="result">结果汇总</button>
-				</div>
-			</div>
-		</div>
-		<!--地图-->
-		<div id='container'></div>
-		<div class="info" hidden>
-			<h4 id='status'></h4>
-			<p id='result'></p>
-			<hr>
-			<p>由于众多浏览器已不再支持非安全域的定位请求，为保位成功率和精度，请升级您的站点到HTTPS。</p>
-		</div>
-	</body>
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+    <title>线索取证</title>
 
-	<script type="text/javascript">
-		$(".box-a").click(function(){
-			window.location.href = "air.html"
-		})
-		$(".water").click(function(){
-			window.location.href = "addSoil.html"
-		})
-		$(".video").click(function(){
-			window.location.href = "addImg.html"
-		})
-		$(function() {
-			setheight();
-		});
-		$(window).resize(function() {
-			setheight();
-		});
+    <link rel="stylesheet" type="text/css" href="../css/addcase.css"/>
+    <link rel="stylesheet" type="text/css" href="../css/obtain.css"/>
+    <script src="../js/jquery.min.js"></script>
+    <script src="../js/common.js"></script>
 
-		function setheight() {
-			var h1 = $(window).height();
-			var h2 = $(".title").height();
-			var h3 = h1 - h2;
-			$(".wrapper").css("height", h1);
-			$(".content").css("height", h3);
-		}
-		
-		$(function(){
-   
-   $('.result').on('click', function(){
-		var html = "<span>汇总描述：</span><textarea class='confirm_input' placeholder='请输入'></textarea>";
-		popTipShow.confirm('结果汇总',html,['提交','取 消'],
-			function(e){
-			  //callback 处理按钮事件
-			  var button = $(e.target).attr('class');
-			  if(button == 'ok'){
-				if(null==$(".confirm_input").val() || ""==$(".confirm_input").val()){
-					webToast("内容不能为空！","bottom", 3000);
-					return;
-				}	
-				
-				this.hide();
-				$(".result").hide();
-				setTimeout(function() {
-					webToast($(".confirm_input").val(),"bottom", 3000);
-				}, 300);
-				
-				//按下确定按钮执行的操作
-				//todo ....								
-			  }
+    <link rel="stylesheet" type="text/css" href="../css/alert.css"/>
+    <script src="../js/alertPopShow.js"></script>
+</head>
+<body>
+<div class="wrapper">
+    <div class="title">
+        <img src="../img/return.png" onclick="javascript:history.back(-1);"/>
+        <span class="t-text">线索取证</span>
+    </div>
+    <div class="content">
+        <div class="jiange"></div>
+        <div class="databox">
+            <div class="frombox">
+                <div class="fromleft">案件名称</div>
+                <div class="fromright">
+                    <span id="caseName"></span>
+                </div>
+            </div>
+            <div class="frombox">
+                <div class="fromleft">案件类型</div>
+                <div class="fromright">
+                    <span id="caseType"></span>
+                </div>
+            </div>
+            <div class="frombox">
+                <div class="fromleft">取证人</div>
+                <div class="fromright">
+                    <span id="userName"></span>
+                </div>
+            </div>
+            <div class="frombox">
+                <div class="fromleft minheight">取证地点</div>
+                <div class="fromright">
+                    <span class="address" id="address"></span>
+                </div>
+            </div>
+        </div>
+        <div class="jiange"></div>
+        <div class="Explain">
+            <div class="Explaintitle">取证方式</div>
+            <div class="imgbox">
+                <div class="box-a video">
+                    <p><img src="../img/img.png"/></p>
+                    <p>图片</p>
+                </div>
+                <div class="box-a video">
+                    <p><img src="../img/video.png"/></p>
+                    <p>视频</p>
+                </div>
+                <div class="box-a video">
+                    <p><img src="../img/music.png"/></p>
+                    <p>音频</p>
+                </div>
+                <div class="box-a water">
+                    <p><img src="../img/water.png"/></p>
+                    <p>水</p>
+                </div>
+                <div class="box-a water">
+                    <p><img src="../img/tu.png"/></p>
+                    <p>土壤</p>
+                </div>
+            </div>
+        </div>
+        <div class="buttonboxs">
+            <button type="button" class="result">结果汇总</button>
+        </div>
+    </div>
+</div>
+<!--地图-->
+<div id='container'></div>
+<div class="info" hidden>
+    <h4 id='status'></h4>
+    <p id='result'></p>
+    <hr>
+    <p>由于众多浏览器已不再支持非安全域的定位请求，为保位成功率和精度，请升级您的站点到HTTPS。</p>
+</div>
+</body>
 
-			  if(button == 'cancel') {
-				//按下取消按钮执行的操作
-				//todo ....
-				this.hide();
-				setTimeout(function() {
-					webToast("您选择“取消”了","top", 2000);
-				}, 300);
-			  }
-			}
-		);
-   });
-   
-});
-	</script>
+<script type="text/javascript">
+    $(".box-a").click(function () {
+        window.location.href = "air.html"
+    });
+    $(".water").click(function () {
+        window.location.href = "addSoil.html"
+    });
+    $(".video").click(function () {
+        window.location.href = "addImg.html"
+    });
+    $(function () {
+        setheight();
+    });
+    $(window).resize(function () {
+        setheight();
+    });
+
+    function setheight() {
+        var h1 = $(window).height();
+        var h2 = $(".title").height();
+        var h3 = h1 - h2;
+        $(".wrapper").css("height", h1);
+        $(".content").css("height", h3);
+    }
+
+
+    setTimeout(function () {
+        initScript();
+        let postData = $.postData("/apis/app/case/findCaseById", {
+            "id": $.getUrlParam("id")
+        });
+
+        if (postData.data != null) {
+            $("#caseName").text(postData.data.caseName);
+            $("#caseType").text(postData.data.caseTypeName);
+            $("#userName").text(postData.data.evidenceUserName);
+            $("#address").text(postData.data.address);
+        } else {
+            $.showToast("系统异常");
+        }
+
+    }, 300);
+
+    function initScript() {
+
+        $('.result').on('click', function () {
+            var html = "<span>汇总描述：</span><textarea class='confirm_input' placeholder='请输入'></textarea>";
+            popTipShow.confirm('结果汇总', html, ['提交', '取 消'],
+                function (e) {
+                    //callback 处理按钮事件
+                    var button = $(e.target).attr('class');
+                    if (button === 'ok') {
+                        if (null == $(".confirm_input").val() || "" == $(".confirm_input").val()) {
+                            webToast("内容不能为空！", "bottom", 3000);
+                            return;
+                        }
+
+                        this.hide();
+                        $(".result").hide();
+                        setTimeout(function () {
+                            webToast($(".confirm_input").val(), "bottom", 3000);
+                        }, 300);
+
+                        //按下确定按钮执行的操作
+                        //todo ....
+                    }
+
+                    if (button == 'cancel') {
+                        //按下取消按钮执行的操作
+                        //todo ....
+                        this.hide();
+                        setTimeout(function () {
+                            webToast("您选择“取消”了", "top", 2000);
+                        }, 300);
+                    }
+                }
+            );
+        });
+    }
+
+
+</script>
 </html>
