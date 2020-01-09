@@ -10,13 +10,16 @@
 		<!-- <link rel="stylesheet" href="https://a.amap.com/jsapi_demos/static/demo-center/css/demo-center.css" /> -->
 		<!-- 定位结束 -->
 		<link rel="stylesheet" type="text/css" href="../css/bootstrap.css" />
-
+		<link rel="stylesheet" href="../css/selectpeople.css">
 		<link rel="stylesheet" type="text/css" href="../css/addcase.css" />
 		<link rel="stylesheet" type="text/css" href="../css/addsoil.css" />
+		<link href="../plugs/iCheck/skins/all.css" rel="stylesheet" type="text/css"/>
 		<script src="../js/jquery.min.js"></script>
+		<script src="../plugs/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
 		<script src="../js/jquery.cookie.js"></script>
 		<script type="text/javascript" src="https://webapi.amap.com/maps?v=1.4.14&key=faa32b169482498e88e4ee58b4942c7a"></script>
 		<script src="http://webapi.amap.com/maps?v=1.4.14&key=faa32b169482498e88e4ee58b4942c7a&plugin=AMap.Geocoder"></script>
+		<script src="../plugs/iCheck/icheck.js"></script>
 		<script src="../js/common.js"></script>
 	</head>
 
@@ -25,59 +28,153 @@
 		<input type="text" id="lat" value="" style="display: none;">
 		<input type="text" id="lng" value="" style="display: none;">
 		<div class="wrapper">
-			<div class="title">
-				<img src="../img/return.png" onclick="javascript:history.back(-1);"/>
-				<span class="t-text">图片</span>
-				<img src="../img/phone.png"/>
+			<div class="one">
+				<div class="title">
+					<img src="../img/return.png" onclick="javascript:history.back(-1);"/>
+					<span class="t-text">图片</span>
+					<img src="../img/phone.png"/>
+				</div>
+				<div class="content">
+					<div class="jiange"></div>
+					<div class="databox">
+						<div class="frombox">
+							<div class="xing">*</div>
+							<div class="fromleft">取证设备</div>
+							<div class="fromright">
+								<input type="text" placeholder="请输入取证设备">
+							</div>
+						</div>
+						<div class="frombox">
+							<div class="xing">*</div>
+							<div class="fromleft">取证人</div>
+							<div class="fromright">
+								<input type="text" placeholder="请选择人" disabled name="evidence" id="evidenceUserId">
+								<img src="../img/right.png" alt="" class="jump jumpone">
+							</div>
+						</div>
+						<div class="frombox">
+							<div class="fromleft">协同取证人</div>
+							<div class="fromright">
+								<input type="text" placeholder="请选择人" disabled value="" name="Coordination" id="togetherEvidenceUserId">
+								<img src="../img/right.png" alt="" class="jump jumptwo">
+							</div>
+						</div>
+						<div class="frombox">
+							<div class="xing">*</div>
+							<div class="fromleft minheight">取证地点</div>
+							<div class="fromright">
+								<textarea type="text" placeholder="请输入取证地点" class="inputcss address map" name="quzheng" onpropertychange="if(this.scrollHeight>60)this.style.height=(this.scrollHeight+'px')" oninput="this.style.height='60px';if(this.scrollHeight>60)this.style.height=(this.scrollHeight-20+'px');"></textarea>
+								<img src="../img/place.png" alt="" class="jump dw" id="openMap">
+							</div>
+						</div>
+						<div class="frombox">
+							<div class="xing">*</div>
+							<div class="fromleft">取证说明</div>
+							<div class="fromright">
+								<textarea class="Explaintexts" placeholder="简单说说行程安排和同伴的要求吧..."></textarea>
+							</div>
+						</div>
+					</div>
+
+					<!-- 表格开始 -->
+					<div class="buttonboxs" style="margin-top: 2.2rem;">
+						<button class="submit">提交</button>
+					</div>
+					<!-- 表格结束 -->
+
+				</div>
 			</div>
-			<div class="content">
-				<div class="jiange"></div>
-				<div class="databox">
-					<div class="frombox">
-						<div class="xing">*</div>
-						<div class="fromleft">取证设备</div>
-						<div class="fromright">
-							<input type="text" placeholder="请输入取证设备">
-						</div>
-					</div>
-					<div class="frombox">
-						<div class="xing">*</div>
-						<div class="fromleft">取证人</div>
-						<div class="fromright">
-							<input type="text" placeholder="请选择人" value="王静" name="evidence">
-							<img src="../img/right.png" alt="" class="jump jumpone">
-						</div>
-					</div>
-					<div class="frombox">
-						<div class="fromleft">协同取证人</div>
-						<div class="fromright">
-							<input type="text" placeholder="请选择人" value="" name="Coordination">
-							<img src="../img/right.png" alt="" class="jump jumptwo">
-						</div>
-					</div>
-					<div class="frombox">
-						<div class="xing">*</div>
-						<div class="fromleft minheight">取证地点</div>
-						<div class="fromright">
-							<textarea type="text" placeholder="请输入取证地点" class="inputcss address map" name="quzheng" onpropertychange="if(this.scrollHeight>60)this.style.height=(this.scrollHeight+'px')" oninput="this.style.height='60px';if(this.scrollHeight>60)this.style.height=(this.scrollHeight-20+'px');"></textarea>
-							<img src="../img/place.png" alt="" class="jump dw" id="openMap">
-						</div>
-					</div>
-					<div class="frombox">
-						<div class="xing">*</div>
-						<div class="fromleft">取证说明</div>
-						<div class="fromright">
-							<textarea class="Explaintexts" placeholder="简单说说行程安排和同伴的要求吧..."></textarea>
-						</div>
-					</div>
+			<div class="two" hidden>
+				<div class="title">
+					<!-- <img src="../img/return.png"  class="twoback"/> -->
+					<span class="twoback">取消</span>
+					<span class="t-text">选择</span>
+					<span class="confirm" onclick="addUserOne()">确定</span>
 				</div>
-
-				<!-- 表格开始 -->
-				<div class="buttonboxs" style="margin-top: 2.2rem;">
-					<button class="submit">提交</button>
+				<div class="content">
+					<!-- 选项卡开始 -->
+					<ul class="nav nav-tabs lefts" id="departmentone">
+						<!--<li class="list active"><a href="#" data-target="#tab1" data-toggle="tab">刑事检察一部</a></li>-->
+						<!--<li class="list"><a href="#" data-target="#tab2" data-toggle="tab">刑事检察二部</a></li>-->
+						<!--<li class="list"><a href="#" data-target="#tab3" data-toggle="tab">刑事检察三部</a></li>-->
+					</ul>
+					<div class="tab-content rights" id="userone">
+						<!--<div class="tab-pane active" id="tab1">-->
+						<!--<ul class="rightcontent">-->
+						<!--<li class="rightli"><input type="radio" name="username"><span>李鑫伟</span></li>-->
+						<!--<li class="rightli"><input type="radio" name="username"><span>马国锋</span></li>-->
+						<!--<li class="rightli"><input type="radio" name="username"><span>周勤</span></li>-->
+						<!--<li class="rightli"><input type="radio" name="username"><span>房海旭</span></li>-->
+						<!--<li class="rightli"><input type="radio" name="username"><span>田永来</span></li>-->
+						<!--</ul>-->
+						<!--</div>-->
+						<!--<div class="tab-pane" id="tab2">-->
+						<!--<ul class="rightcontent">-->
+						<!--<li class="rightli"><input type="radio" name="username"><span>李鑫伟2</span></li>-->
+						<!--<li class="rightli"><input type="radio" name="username"><span>马国锋2</span></li>-->
+						<!--<li class="rightli"><input type="radio" name="username"><span>周勤2</span></li>-->
+						<!--<li class="rightli"><input type="radio" name="username"><span>房海旭2</span></li>-->
+						<!--<li class="rightli"><input type="radio" name="username"><span>田永来2</span></li>-->
+						<!--</ul>-->
+						<!--</div>-->
+						<!--<div class="tab-pane" id="tab3">-->
+						<!--<ul class="rightcontent">-->
+						<!--<li class="rightli"><input type="radio" name="username"><span>李鑫伟3</span></li>-->
+						<!--<li class="rightli"><input type="radio" name="username"><span>马国锋3</span></li>-->
+						<!--<li class="rightli"><input type="radio" name="username"><span>周勤3</span></li>-->
+						<!--<li class="rightli"><input type="radio" name="username"><span>房海旭3</span></li>-->
+						<!--<li class="rightli"><input type="radio" name="username"><span>田永来3</span></li>-->
+						<!--</ul>-->
+						<!--</div>-->
+					</div>
+					<!-- 选项卡结束 -->
 				</div>
-				<!-- 表格结束 -->
-
+			</div>
+			<div class="three" hidden>
+				<div class="title">
+					<!-- <img src="../img/return.png"  class="twoback"/> -->
+					<span class="threeback">取消</span>
+					<span class="t-text">选择</span>
+					<span class="confirm" onclick="addUserTwo()">确定</span>
+				</div>
+				<div class="content">
+					<!-- 选项卡开始 -->
+					<ul class="nav nav-tabs lefts" id="departmenttwo">
+						<!--<li class="list active"><a href="#" data-target="#tab4" data-toggle="tab">tab1</a></li>-->
+						<!--<li class="list"><a href="#" data-target="#tab5" data-toggle="tab">tab2</a></li>-->
+						<!--<li class="list"><a href="#" data-target="#tab6" data-toggle="tab">tab3</a></li>-->
+					</ul>
+					<div class="tab-content rights" id="usertwo">
+						<!--<div class="tab-pane active" id="tab4">-->
+						<!--<ul class="rightcontent">-->
+						<!--<li class="rightli"><input type="checkbox" name="usernametwo"><span>李鑫伟</span></li>-->
+						<!--<li class="rightli"><input type="checkbox" name="usernametwo"><span>马国锋</span></li>-->
+						<!--<li class="rightli"><input type="checkbox" name="usernametwo"><span>周勤</span></li>-->
+						<!--<li class="rightli"><input type="checkbox" name="usernametwo"><span>房海旭</span></li>-->
+						<!--<li class="rightli"><input type="checkbox" name="usernametwo"><span>田永来</span></li>-->
+						<!--</ul>-->
+						<!--</div>-->
+						<!--<div class="tab-pane" id="tab5">-->
+						<!--<ul class="rightcontent">-->
+						<!--<li class="rightli"><input type="checkbox" name="usernametwo"><span>李鑫伟2</span></li>-->
+						<!--<li class="rightli"><input type="checkbox" name="usernametwo"><span>马国锋2</span></li>-->
+						<!--<li class="rightli"><input type="checkbox" name="usernametwo"><span>周勤2</span></li>-->
+						<!--<li class="rightli"><input type="checkbox" name="usernametwo"><span>房海旭2</span></li>-->
+						<!--<li class="rightli"><input type="checkbox" name="usernametwo"><span>田永来2</span></li>-->
+						<!--</ul>-->
+						<!--</div>-->
+						<!--<div class="tab-pane" id="tab6">-->
+						<!--<ul class="rightcontent">-->
+						<!--<li class="rightli"><input type="checkbox" name="usernametwo"><span>李鑫伟3</span></li>-->
+						<!--<li class="rightli"><input type="checkbox" name="usernametwo"><span>马国锋3</span></li>-->
+						<!--<li class="rightli"><input type="checkbox" name="usernametwo"><span>周勤3</span></li>-->
+						<!--<li class="rightli"><input type="checkbox" name="usernametwo"><span>房海旭3</span></li>-->
+						<!--<li class="rightli"><input type="checkbox" name="usernametwo"><span>田永来3</span></li>-->
+						<!--</ul>-->
+						<!--</div>-->
+					</div>
+					<!-- 选项卡结束 -->
+				</div>
 			</div>
 		</div>
 		<!--地图-->
@@ -94,17 +191,40 @@
 	<link rel="stylesheet" href="http://cache.amap.com/lbs/static/main.css?v=1.0?v=1.0" />
 	<script type="text/javascript">
 		
-		$(".submit").click(function() {
-			window.location.href = "obtain.html";
+		// $(".submit").click(function() {
+		// 	window.location.href = "obtain.html";
+		// })
+		$(".jumpone").click(function () {
+			$(".one").hide();
+			$(".three").hide();
+			$(".two").show();
 		})
-		
+		$(".jumptwo").click(function () {
+			$(".one").hide();
+			$(".two").hide();
+			$(".three").show();
+		})
+		$(".twoback").click(function () {
+			$(".one").show();
+			$(".two").hide();
+			$(".three").hide();
+		})
+		$(".threeback").click(function () {
+			$(".one").show();
+			$(".two").hide();
+			$(".three").hide();
+		})
 		$(function() {
-			setheight();
-			map();
-			var people = $.cookie('people');
-			$("input[name='evidence']").val(people);
-			var peopletwo = $.cookie('peopletwo');
-			$("input[name='Coordination']").val(peopletwo);
+			setTimeout(function () {
+				//获取取证人员
+				getPerson()
+				setheight();
+				map();
+				var people = $.cookie('people');
+				$("input[name='evidence']").val(people);
+				var peopletwo = $.cookie('peopletwo');
+				$("input[name='Coordination']").val(peopletwo);
+			}, 300);
 		});
 		$(window).resize(function() {
 			setheight();
@@ -118,13 +238,84 @@
 			$(".wrapper").css("height", h1);
 			$(".content").css("height", h3);
 		}
-		$(".jumpone").click(function() {
-			window.location.href = "selectpeople.html";
-		})
-		$(".jumptwo").click(function() {
-			window.location.href = "selectpeopletwo.html";
-		})
 
+
+		//选中取证人
+		let evidenceUserId=null;
+		function addUserOne() {
+			evidenceUserId=$("input:radio[name='username']:checked").val()
+			$("#evidenceUserId").val($("input:radio[name='username']:checked").attr('username'));
+			$(".one").show();
+			$(".two").hide();
+			$(".three").hide();
+		}
+		//选中共同取证人
+		let togetherEvidenceUserId='';
+		let togetherEvidenceUserName="";
+		function addUserTwo() {
+			togetherEvidenceUserId="";
+			$("input[name=usernametwo]:checkbox").each(function(){
+				if(true == $(this).is(':checked')){
+					togetherEvidenceUserId+=$(this).val()+",";
+					togetherEvidenceUserName+=$(this).attr('username')+",";
+				}
+			});
+			$("#togetherEvidenceUserId").val(togetherEvidenceUserName)
+			$(".one").show();
+			$(".two").hide();
+			$(".three").hide();
+		}
+		//获取所有取证人员
+		function getPerson() {
+			let result = $.postData('/apis/app/case/findUser', {})
+			if (result.status) {
+				let data = result.data;
+				let departmentone = '';
+				let departmenttwo = '';
+				let userone = '';
+				let usertwo = '';
+				$(data).each(function (index, obj) {
+					let userlist = obj.roUserList;
+					let classList = 'list';
+					let classTab = 'tab-pane';
+					if (index == 0) {
+						classList = 'list active'
+						classTab = 'tab-pane active';
+					}
+					departmentone += '<li class="' + classList + '"><a href="#" data-target="#one' + obj.departmentId + '" data-toggle="tab">' + obj.departmentName + '</a></li>';
+					departmenttwo += '<li class="' + classList + '"><a href="#" data-target="#two' + obj.departmentId + '" data-toggle="tab">' + obj.departmentName + '</a></li>';
+					let userlistone = '';
+					let userlisttwo = '';
+					$(userlist).each(function (i, user) {
+						userlistone += '<li class="rightli"><input type="radio" value="'+user.userId+'" name="username" username="'+user.userName+'"><span>'+user.userName+'</span></li>';
+						userlisttwo += '<li class="rightli"><input type="checkbox" value="'+user.userId+'" name="usernametwo" username="'+user.userName+'"><span>'+user.userName+'</span></li>';
+					})
+					userone += '<div class="' + classTab + '" id="one' + obj.departmentId + '">\n' +
+							'                    <ul class="rightcontent">\n' +
+							userlistone +
+							'                    </ul>\n' +
+							'                </div>';
+					usertwo += '<div class="'+classTab+'" id="two'+obj.departmentId+'">\n' +
+							'                    <ul class="rightcontent">\n' +
+							userlisttwo +
+							'                    </ul>\n' +
+							'                </div>';
+				})
+				$("#departmentone").html(departmentone)
+				$("#userone").html(userone)
+				$("#departmenttwo").html(departmenttwo)
+				$("#usertwo").html(usertwo)
+				// icjeck
+				$('input').iCheck({
+					checkboxClass: 'icheckbox_minimal-blue',
+					radioClass: 'iradio_minimal-blue',
+					increaseArea: '20%' // optional
+				});
+			} else {
+				$.showToast(result.msg)
+			}
+			console.log(result)
+		}
 		// 地图定位
 		/*定位高德地图*/
 		function map() {
