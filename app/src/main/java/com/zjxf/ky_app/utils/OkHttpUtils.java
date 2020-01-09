@@ -128,6 +128,34 @@ public class OkHttpUtils {
     }
 
     /**
+     * post请求，同步方式，提交数据，是在主线程中执行的，需要新起线程，将其放到子线程中执行
+     *
+     * @param url        请求地址
+     * @param bodyParams 请求参数
+     * @param authToken  请求参数
+     * @return Response
+     */
+    public Response postDataAsJwt(String url, Map<String, Object> bodyParams, String authToken) {
+        //1构造RequestBody
+        RequestBody body = setRequestBody(bodyParams);
+        //2 构造Request
+        Request.Builder requestBuilder = new Request.Builder();
+        requestBuilder.addHeader("authorization", authToken);
+        Request request = requestBuilder.post(body).url(url).build();
+        //3 将Request封装为Call
+        Call call = mOkHttpClient.newCall(request);
+        //4 执行Call，得到response
+        Response response = null;
+        try {
+            response = call.execute();
+        } catch (IOException e) {
+            e.printStackTrace();
+            System.out.println(e.getMessage());
+        }
+        return response;
+    }
+
+    /**
      * get请求，异步方式，获取网络数据，是在子线程中执行的，需要切换到主线程才能更新UI
      *
      * @param url

@@ -31,6 +31,13 @@
             let postData = window.zjxf.postData(JSON.stringify(paramJson));
             return JSON.parse(postData);
         };
+        $.postLogin = function (url, data) {
+            var paramJson = {};
+            $(paramJson).attr("url", url);
+            $(paramJson).attr("param", data);
+            let postData = window.zjxf.login(JSON.stringify(paramJson));
+            return postData;
+        };
         $.showToast = function (message) {
             window.zjxf.showToast(message);
         };

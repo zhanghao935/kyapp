@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
     <title>登录页</title>
     <link rel="stylesheet" type="text/css" href="../css/login.css"/>
+    <link rel="stylesheet" type="text/css" href="../css/addcase.css"/>
     <script src="../js/jquery.min.js"></script>
     <script src="../js/jquery.cookie.js"></script>
     <script src="../js/common.js"></script>
@@ -20,11 +21,11 @@
     </div>
     <div class="Account">
         <div class="text">账号：</div>
-        <input type="text" placeholder="请输入用户名">
+        <input type="text" placeholder="请输入用户名" id="username">
     </div>
     <div class="Password">
         <div class="text">密码：</div>
-        <input type="password" placeholder="请输入密码">
+        <input type="password" placeholder="请输入密码" id="password">
     </div>
     <div class="forget">
         <div class="forgettext">忘记密码</div>
@@ -38,26 +39,38 @@
 
 
 <script type="text/javascript">
-		var oHeight = $(document).height();
-		$(function() {
-			setheight();
-		});
-		$(window).resize(function() {
-			setheight();
-			if($(document).height() < oHeight){
-				$(".footer").css("position","static");
-			}else{
-				$(".footer").css("position","absolute");
-			}
-		});
+    var oHeight = $(document).height();
+    $(function () {
+        setheight();
+    });
+    $(window).resize(function () {
+        setheight();
+        if ($(document).height() < oHeight) {
+            $(".footer").css("position", "static");
+        } else {
+            $(".footer").css("position", "absolute");
+        }
+    });
 
-		function setheight() {
-			var h1 = $(window).height();
-			$(".box").css("height", h1);
-		}
-		function loginUser(){
-			window.location.href="discovery.html"
-		}
+    function setheight() {
+        var h1 = $(window).height();
+        $(".box").css("height", h1);
+    }
+
+    function loginUser() {
+
+        let username = $("#username").val();
+        let password = $("#password").val();
+
+        let postData = $.postLogin("/apis/login/loginUserApp", {
+            username: username,
+            password: password
+        });
+        if (postData == "true") {
+            window.location.href = "discovery.html"
+        }
+
+    }
 
 </script>
 

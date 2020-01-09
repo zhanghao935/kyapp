@@ -16,7 +16,7 @@
 <body>
 <div class="wrapper">
     <div class="title">
-        <span class="t-img"><img src="../img/return.png"/></span>
+        <span class="t-img back"><img src="../img/return.png"/></span>
         <span class="t-text">勘验取证</span>
         <span class="t-img add"><a href="addcase.html"><img src="../img/add.png"/></a></span>
     </div>
@@ -28,13 +28,13 @@
             </ul>
         </div>
         <div class="tab-one" id="div_tap_0">
-            <div class='imgbox'><img src='../img/loadding.gif'>
+            <div class='imgbox'><img src='../img/loadding-2.gif'>
                 <div class='nodata'>拼命加载中...</div>
             </div>
         </div>
 
         <div class="tab-two hide" id="div_tap_1">
-            <div class='imgbox'><img src='../img/loadding.gif'>
+            <div class='imgbox'><img src='../img/loadding-2.gif'>
                 <div class='nodata'>拼命加载中...</div>
             </div>
         </div>
@@ -103,7 +103,7 @@
             }
             $("#div_tap_" + state).html(contentStr);
             initClick();
-        }, 300);
+        }, 1000);
 
 
     }
@@ -124,10 +124,10 @@
 
     function initClick() {
         $(".tab-one .contentone").click(function () {
-            window.location.href = "obtain.html?id=" + $(this).attr("data_id");
+            window.location.href = "obtain.html?id=" + $(this).attr("data_id") + "&type=" + 1;
         });
         $(".tab-two .contentone").click(function () {
-            window.location.href = "air.html?id=" + $(this).attr("data_id");
+            window.location.href = "obtain.html?id=" + $(this).attr("data_id") + "&type=" + 2;
         });
     }
 

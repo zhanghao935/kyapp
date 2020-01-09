@@ -8,6 +8,8 @@ import android.view.Window;
 import android.view.WindowManager;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.zjxf.ky_app.utils.StatusBarUtils;
+
 public class SplashActivity extends AppCompatActivity {
     private static final int WHAT_DELAY = 0x11;// 启动页的延时跳转
     private static final int DELAY_TIME = 3000;// 延时时间
@@ -31,6 +33,7 @@ public class SplashActivity extends AppCompatActivity {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(com.zjxf.ky_app.R.layout.activity_splash);
+        StatusBarUtils.setTranslucentStatus(this);
         // 调用handler的sendEmptyMessageDelayed方法
         handler.sendEmptyMessageDelayed(WHAT_DELAY, DELAY_TIME);
     }

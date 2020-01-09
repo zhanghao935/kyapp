@@ -1,205 +1,250 @@
 * {
-        -webkit-tap-highlight-color: rgba(0, 0, 0, 0.2);
-        -webkit-focus-ring-color: rgba(0, 0, 0, 0.2);
-        -webkit-touch-callout: none;
-        -webkit-user-select: none;
-        -khtml-user-select: none;
-        -moz-user-select: none;
-        -ms-user-select: none;
-        user-select: none;
-    }
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0.2);
+    -webkit-focus-ring-color: rgba(0, 0, 0, 0.2);
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
 
-body{
-	margin: 0;
-	padding: 0;
-	font-family: "微软雅黑";
-	background: #f6f6f6;
+body {
+    margin: 0;
+    padding: 0;
+    font-family: "微软雅黑";
+    background: #f6f6f6;
 }
-.add img{
-	width: 0.5rem !important;
-	height: 0.5rem !important;
+
+.add img {
+    width: 0.5rem !important;
+    height: 0.5rem !important;
 }
-.active{
-	color: #438cf2;
-	border-bottom: 2px solid #438cf2;
-	padding-bottom: 0.13rem;
+
+.active {
+    color: #438cf2;
+    border-bottom: 2px solid #438cf2;
+    padding-bottom: 0.13rem;
 }
-.wrapper{
-	overflow: auto;
+
+.wrapper {
+    overflow: auto;
 }
+
 /*头部*/
-.title{
-	width: 100%;
-	height: 0.9rem;
-	line-height: 0.4rem;
-	background: #438cf2;
-	color: #fff;
-	text-align: center;
-	overflow: hidden;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	padding: 0 0.3rem;
+.title {
+    width: 100%;
+    height: 1.4rem;
+    line-height: 1.82rem;
+    background: #438cf2;
+    color: #fff;
+    text-align: center;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    padding: 0 0.3rem;
     box-sizing: border-box;
 }
-.title .t-img img{
-	width: 0.32rem;
-	height: 0.32rem;
-	display: block;
+
+.title .back {
+    position: relative;
 }
-.t-text{
-	flex: 1;
-	font-size: 0.36rem;
+
+.title .back img {
+    width: 0.32rem;
+    height: 0.32rem;
+    display: block;
+    position: absolute;
+    top: 53%;
+    left: 0;
+}
+
+.title .add {
+    position: relative;
+}
+
+.title .add img {
+    width: 0.32rem;
+    height: 0.32rem;
+    display: block;
+    position: absolute;
+    top: 47%;
+    right: 0;
+}
+
+.t-text {
+    flex: 1;
+    font-size: 0.36rem;
 }
 
 /*content*/
-.content{
-	width: 100%;
-	height: 100%;
-	overflow: auto;
-	box-sizing: border-box;
-}
-.tab{
-	width: 100%;
-	overflow: hidden;
-	background: #FFF;
-	height: 1rem;
-	line-height: 1rem;
-	margin-bottom: 1px;
-	position: fixed;
-	z-index: 999;
-}
-.tab ul{
-	width: 100%;
-	overflow: hidden;
-	padding-left: 0;
-	text-align: center;
-	margin:0
-}
-.tab ul li{
-	width: 50%;
-	float: left;
-	font-size: 0.33rem;
-	list-style: none;
-	cursor: pointer;
-	color: #999;
-}
-.tab-one{
-	margin-top: 1rem;
-}
-.tab-two{
-	margin-top: 1rem;
-}
-.contentone{
-	width: 100%;
-	background: #fff;
-	margin: 1px 0;
-}
-.contentone .onebox{
-	padding:18px;
-	overflow: hidden;
-}
-.contentone .onebox .c-title{
-	font-size: 0.33rem;
-	color: #484a59;
-	margin-bottom: 10px;
-	display:-webkit-box;
-    overflow:hidden; 
-    text-overflow:ellipsis;
-    -webkit-box-orient:vertical;
-    -webkit-line-clamp:1; 
-	
-}
-.contentone .onebox .c-content{
-	width: 100%;
-	overflow: hidden;
-	font-size: 0.28rem;
-}
-.contentone .onebox .c-content span{
-	font-size: 0.28rem;
-	color: rgba(72,74,89,.7);
-	line-height:0.45rem;
-	
-	/*span 溢出隐藏*/
-	display:-webkit-box;
-    overflow:hidden; 
-    text-overflow:ellipsis;
-    -webkit-box-orient:vertical;
-    -webkit-line-clamp:1; 
-}
-.place{
-	width: 40%;
-	float: left;
-	font-size: 0.28rem;
-	color: rgba(72,74,89,.7);
-	margin: 10px 0;
-	position: relative;
-	padding-left: 0.3rem;
-	display:-webkit-box;
-    overflow:hidden; 
-    text-overflow:ellipsis;
-    -webkit-box-orient:vertical;
-    -webkit-line-clamp:1; 
-}
-.place img{
-	width: 0.3rem;
-	position: absolute;
-	left: 0;
-	top: 0.02rem;
-}
-.date{
-	float: left;
-	font-size: 0.28rem;
-	color: rgba(72,74,89,.7);
-	margin: 10px 0;
-}
-.c-name{
-	float: right;
-	color: #fff;
-	font-size: 0.3rem;
-	margin: 10px 0;
-}
-.c-name span{
-	font-size: 0.28rem;
-	background: #f3bf67;
-	padding: 2px 5px;
-	border-radius: 4px;
-	margin-left: 10px;
-	display: inline-block;
+.content {
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    box-sizing: border-box;
 }
 
-.content::-webkit-scrollbar {/*滚动条整体样式*/
-    width: 5px;     /*高宽分别对应横竖滚动条的尺寸*/
+.tab {
+    width: 100%;
+    overflow: hidden;
+    background: #FFF;
+    height: 1rem;
+    line-height: 1rem;
+    margin-bottom: 1px;
+    position: fixed;
+    z-index: 999;
+}
+
+.tab ul {
+    width: 100%;
+    overflow: hidden;
+    padding-left: 0;
+    text-align: center;
+    margin: 0
+}
+
+.tab ul li {
+    width: 50%;
+    float: left;
+    font-size: 0.33rem;
+    list-style: none;
+    cursor: pointer;
+    color: #999;
+}
+
+.tab-one {
+    margin-top: 1rem;
+}
+
+.tab-two {
+    margin-top: 1rem;
+}
+
+.contentone {
+    width: 100%;
+    background: #fff;
+    margin: 1px 0;
+}
+
+.contentone .onebox {
+    padding: 18px;
+    overflow: hidden;
+}
+
+.contentone .onebox .c-title {
+    font-size: 0.33rem;
+    color: #484a59;
+    margin-bottom: 10px;
+    display: -webkit-box;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
+
+}
+
+.contentone .onebox .c-content {
+    width: 100%;
+    overflow: hidden;
+    font-size: 0.28rem;
+}
+
+.contentone .onebox .c-content span {
+    font-size: 0.28rem;
+    color: rgba(72, 74, 89, .7);
+    line-height: 0.45rem;
+
+    /*span 溢出隐藏*/
+    display: -webkit-box;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
+}
+
+.place {
+    width: 40%;
+    float: left;
+    font-size: 0.28rem;
+    color: rgba(72, 74, 89, .7);
+    margin: 10px 0;
+    position: relative;
+    padding-left: 0.3rem;
+    display: -webkit-box;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
+}
+
+.place img {
+    width: 0.3rem;
+    position: absolute;
+    left: 0;
+    top: 0.02rem;
+}
+
+.date {
+    float: left;
+    font-size: 0.28rem;
+    color: rgba(72, 74, 89, .7);
+    margin: 10px 0;
+}
+
+.c-name {
+    float: right;
+    color: #fff;
+    font-size: 0.3rem;
+    margin: 10px 0;
+}
+
+.c-name span {
+    font-size: 0.28rem;
+    background: #f3bf67;
+    padding: 2px 5px;
+    border-radius: 4px;
+    margin-left: 10px;
+    display: inline-block;
+}
+
+.content::-webkit-scrollbar { /*滚动条整体样式*/
+    width: 5px; /*高宽分别对应横竖滚动条的尺寸*/
     height: 10px;
     display: none;
 }
-.content::-webkit-scrollbar-thumb {/*滚动条里面小方块*/
-	height:10px;
+
+.content::-webkit-scrollbar-thumb { /*滚动条里面小方块*/
+    height: 10px;
     border-radius: 10px;
-	background-color: #ccc;
-	height:30px !important;
-    }
-.content::-webkit-scrollbar-track {/*滚动条里面轨道*/
+    background-color: #ccc;
+    height: 30px !important;
+}
+
+.content::-webkit-scrollbar-track { /*滚动条里面轨道*/
     background: none;
-    }
+}
 
 /*无数据图片*/
-.imgbox{
-    width:100%;
-    height:auto;
-    overflow:hidden;
-	text-align: center;
-	margin-top:40%;
- }
-.imgbox img{
-	width: 35%;
+.imgbox {
+    width: 100%;
+    height: auto;
+    overflow: hidden;
+    text-align: center;
+    margin-top: 40%;
 }
-.nodata{
-    font-size:0.32rem;
-    color:#747b88;
+
+.imgbox img {
+    width: 35%;
 }
-.hide{
-	display: none;
+
+.nodata {
+    font-size: 0.32rem;
+    color: #747b88;
+}
+
+.hide {
+    display: none;
 }
 
 

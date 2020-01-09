@@ -17,7 +17,7 @@
 <body>
 <div class="wrapper">
     <div class="title">
-        <img src="../img/return.png" onclick="javascript:history.back(-1);"/>
+        <img src="../img/return.png" onclick="javascript:history.back(-1);" class="back"/>
         <span class="t-text">线索取证</span>
     </div>
     <div class="content">
@@ -51,27 +51,27 @@
         <div class="jiange"></div>
         <div class="Explain">
             <div class="Explaintitle">取证方式</div>
-            <div class="imgbox">
-                <div class="box-a video">
-                    <p><img src="../img/img.png"/></p>
-                    <p>图片</p>
-                </div>
-                <div class="box-a video">
-                    <p><img src="../img/video.png"/></p>
-                    <p>视频</p>
-                </div>
-                <div class="box-a video">
-                    <p><img src="../img/music.png"/></p>
-                    <p>音频</p>
-                </div>
-                <div class="box-a water">
-                    <p><img src="../img/water.png"/></p>
-                    <p>水</p>
-                </div>
-                <div class="box-a water">
-                    <p><img src="../img/tu.png"/></p>
-                    <p>土壤</p>
-                </div>
+            <div class="imgbox" id="qz_div">
+                <!--                <div class="box-a video">-->
+                <!--                    <p><img src="../img/img.png"/></p>-->
+                <!--                    <p>图片</p>-->
+                <!--                </div>-->
+                <!--                <div class="box-a video">-->
+                <!--                    <p><img src="../img/video.png"/></p>-->
+                <!--                    <p>视频</p>-->
+                <!--                </div>-->
+                <!--                <div class="box-a video">-->
+                <!--                    <p><img src="../img/music.png"/></p>-->
+                <!--                    <p>音频</p>-->
+                <!--                </div>-->
+                <!--                <div class="box-a water">-->
+                <!--                    <p><img src="../img/water.png"/></p>-->
+                <!--                    <p>水</p>-->
+                <!--                </div>-->
+                <!--                <div class="box-a water">-->
+                <!--                    <p><img src="../img/tu.png"/></p>-->
+                <!--                    <p>土壤</p>-->
+                <!--                </div>-->
             </div>
         </div>
         <div class="buttonboxs">
@@ -90,15 +90,9 @@
 </body>
 
 <script type="text/javascript">
-    $(".box-a").click(function () {
-        window.location.href = "air.html"
-    });
-    $(".water").click(function () {
-        window.location.href = "addSoil.html"
-    });
-    $(".video").click(function () {
-        window.location.href = "addImg.html"
-    });
+    // $(".box-a").click(function () {
+    //     window.location.href = "air.html"
+    // });
     $(function () {
         setheight();
     });
@@ -116,12 +110,12 @@
 
 
     setTimeout(function () {
-        initScript();
+        initEvidence();
         let postData = $.postData("/apis/app/case/findCaseById", {
             "id": $.getUrlParam("id")
         });
-
         if (postData.data != null) {
+
             $("#caseName").text(postData.data.caseName);
             $("#caseType").text(postData.data.caseTypeName);
             $("#userName").text(postData.data.evidenceUserName);
@@ -129,11 +123,11 @@
         } else {
             $.showToast("系统异常");
         }
+        initScript();
 
     }, 300);
 
     function initScript() {
-
         $('.result').on('click', function () {
             var html = "<span>汇总描述：</span><textarea class='confirm_input' placeholder='请输入'></textarea>";
             popTipShow.confirm('结果汇总', html, ['提交', '取 消'],
@@ -167,6 +161,64 @@
                 }
             );
         });
+    }
+
+    function initEvidence() {
+        let postData = $.postData("/apis/app/case/findAllType", {});
+        if (postData.data !== null) {
+            let contentStr = "";
+            $.each(postData.data, function (i, obj) {
+                if (obj.surveyTypeName == "图片") {
+                    contentStr += "<div class=\"box-a video\">\n" +
+                        "                    <p><img src=\"../img/img.png\"/></p>\n" +
+                        "                    <p>" + obj.surveyTypeName + "</p>\n" +
+                        "                </div>"
+                } else if (obj.surveyTypeName == "视频") {
+                    contentStr += "<div class=\"box-a video\">\n" +
+                        "                    <p><img src=\"../img/video.png\"/></p>\n" +
+                        "                    <p>" + obj.surveyTypeName + "</p>\n" +
+                        "                </div>"
+                } else if (obj.surveyTypeName == "音频") {
+                    contentStr += "<div class=\"box-a video\">\n" +
+                        "                    <p><img src=\"../img/music.png\"/></p>\n" +
+                        "                    <p>" + obj.surveyTypeName + "</p>\n" +
+                        "                </div>"
+                } else if (obj.surveyTypeName == "水") {
+                    contentStr += "<div class=\"box-a water\">\n" +
+                        "                    <p><img src=\"../img/water.png\"/></p>\n" +
+                        "                    <p>" + obj.surveyTypeName + "</p>\n" +
+                        "                </div>"
+                } else if (obj.surveyTypeName == "土壤") {
+                    contentStr += "<div class=\"box-a water\">\n" +
+                        "                    <p><img src=\"../img/tu.png\"/></p>\n" +
+                        "                    <p>" + obj.surveyTypeName + "</p>\n" +
+                        "                </div>";
+                } else {
+                    contentStr += "<div class=\"box-a water\">\n" +
+                        "                    <p><img src=\"../img/ty.png\"/></p>\n" +
+                        "                    <p>" + obj.surveyTypeName + "</p>\n" +
+                        "                </div>";
+                }
+            });
+            $("#qz_div").html(contentStr);
+        }
+
+        if ($.getUrlParam("type") == 1) {
+            $(".water").click(function () {
+                window.location.href = "addSoil.html"
+            });
+            $(".video").click(function () {
+                window.location.href = "addImg.html"
+            });
+        } else {
+            $(".water").click(function () {
+                window.location.href = "air.html"
+            });
+            $(".video").click(function () {
+                window.location.href = "air.html"
+            });
+        }
+
     }
 
 
