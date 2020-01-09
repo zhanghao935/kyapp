@@ -1,11 +1,15 @@
 package com.zjxf.ky_app;
 
+import android.Manifest;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.WindowManager;
 import android.webkit.*;
+import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
 
 import static android.webkit.WebSettings.LayoutAlgorithm.SINGLE_COLUMN;
 
@@ -26,6 +30,16 @@ public class MainActivity extends AppCompatActivity implements KeyEvent.Callback
         setContentView(com.zjxf.ky_app.R.layout.activity_main);
         AndroidBug5497Workaround.assistActivity(this);
         initWebView(Boolean.FALSE);
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION)
+                != PackageManager.PERMISSION_GRANTED
+                || ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION)
+                != PackageManager.PERMISSION_GRANTED
+                || ActivityCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE)
+                != PackageManager.PERMISSION_GRANTED) {
+            Toast.makeText(getApplicationContext(),"没有权限,请手动开启定位权限",Toast.LENGTH_SHORT).show();
+            // 申请一个（或多个）权限，并提供用于回调返回的获取码（用户定义）
+            ActivityCompat.requestPermissions(MainActivity.this,new String[]{Manifest.permission.ACCESS_COARSE_LOCATION, Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.WRITE_EXTERNAL_STORAGE}, 100);
+        }
     }
 
     /**
@@ -52,6 +66,8 @@ public class MainActivity extends AppCompatActivity implements KeyEvent.Callback
                 return Boolean.TRUE;
             }
         });
+        //启用地理定位
+        inquestWb.getSettings().setGeolocationEnabled(true);
         inquestWb.setWebChromeClient(new WebChromeClient() {
             @Override
             public boolean onJsAlert(WebView view, String url, String message, JsResult result) {
@@ -64,6 +80,13 @@ public class MainActivity extends AppCompatActivity implements KeyEvent.Callback
         if (isAllScreen) {
             getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         }
+        inquestWb.setWebChromeClient(new WebChromeClient() {
+            @Override
+            public void onGeolocationPermissionsShowPrompt(String origin, GeolocationPermissions.Callback callback) {
+                callback.invoke(origin, true, false);
+                super.onGeolocationPermissionsShowPrompt(origin, callback);
+            }
+        });
         inquestWb.addJavascriptInterface(new JavaScriptInterface(this), "zjxf");
         inquestWb.loadUrl("file:///android_asset/html/login.html");
     }

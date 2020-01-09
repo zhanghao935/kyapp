@@ -361,7 +361,8 @@
             evidenceUserId: evidenceUserId,
             togetherEvidenceUserId: togetherEvidenceUserId,
             address: address,
-            explains: explain
+            explains: explain,
+            coordinate:[lng,lat]
         }
         let result = $.postData('/apis/app/case/saveCase', param)
         $.showToast(result.msg)
@@ -369,8 +370,9 @@
             window.location.href="discovery.html";
         }
     }
-
     // 地图定位
+    let lng=116.43;
+    let lat=39.91;
     /*定位高德地图*/
     function map() {
         var map = new AMap.Map('container', {
@@ -388,7 +390,6 @@
             geolocation.getCurrentPosition(function (status, result) {
                 if (status == 'complete') {
                     onComplete(result)
-
                 } else {
                     onError(result)
                 }
@@ -399,6 +400,8 @@
         function onComplete(data) {
             document.getElementById('status').innerHTML = '定位成功'
             var str = [];
+            lat=data.position.lat
+            lng=data.position.lng
             str.push('定位结果：' + data.position);
             str.push('定位类别：' + data.location_type);
             if (data.accuracy) {
@@ -429,7 +432,7 @@
 
         //解析定位错误信息
         function onError(data) {
-
+            console.log(data)
         }
 
         //初始化地图对象，加载地图
