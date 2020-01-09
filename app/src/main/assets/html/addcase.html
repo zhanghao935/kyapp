@@ -268,12 +268,15 @@
     let togetherEvidenceUserName="";
     function addUserTwo() {
         togetherEvidenceUserId="";
+        togetherEvidenceUserName="";
         $("input[name=usernametwo]:checkbox").each(function(){
             if(true == $(this).is(':checked')){
                 togetherEvidenceUserId+=$(this).val()+",";
                 togetherEvidenceUserName+=$(this).attr('username')+",";
             }
         });
+        togetherEvidenceUserId=togetherEvidenceUserId.substring(0,togetherEvidenceUserId.length-1);
+        togetherEvidenceUserName=togetherEvidenceUserName.substring(0,togetherEvidenceUserName.length-1)
         $("#togetherEvidenceUserId").val(togetherEvidenceUserName)
         $(".one").show();
         $(".two").hide();
@@ -373,6 +376,7 @@
     // 地图定位
     let lng=116.43;
     let lat=39.91;
+    let district="";
     /*定位高德地图*/
     function map() {
         var map = new AMap.Map('container', {
@@ -402,6 +406,7 @@
             var str = [];
             lat=data.position.lat
             lng=data.position.lng
+            district=data.addressComponent.district
             str.push('定位结果：' + data.position);
             str.push('定位类别：' + data.location_type);
             if (data.accuracy) {
@@ -475,6 +480,9 @@
                     [point],
                     function (status, result) {
                         var location_address = result.regeocodes[0].formattedAddress;
+                        lat=point.lat;
+                        lng=point.lng;
+                        district=result.regeocodes.addressComponent.district
                         laodmap_amap();
                         $("textarea[name=quzheng]").val(location_address);
                     }

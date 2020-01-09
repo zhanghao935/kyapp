@@ -254,12 +254,15 @@
 		let togetherEvidenceUserName="";
 		function addUserTwo() {
 			togetherEvidenceUserId="";
+			togetherEvidenceUserName="";
 			$("input[name=usernametwo]:checkbox").each(function(){
 				if(true == $(this).is(':checked')){
 					togetherEvidenceUserId+=$(this).val()+",";
 					togetherEvidenceUserName+=$(this).attr('username')+",";
 				}
 			});
+			togetherEvidenceUserId=togetherEvidenceUserId.substring(0,togetherEvidenceUserId.length-1);
+			togetherEvidenceUserName=togetherEvidenceUserName.substring(0,togetherEvidenceUserName.length-1)
 			$("#togetherEvidenceUserId").val(togetherEvidenceUserName)
 			$(".one").show();
 			$(".two").hide();

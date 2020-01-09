@@ -2,21 +2,15 @@ package com.zjxf.ky_app;
 
 import android.Manifest;
 import android.content.pm.PackageManager;
+import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.WindowManager;
-import android.webkit.GeolocationPermissions;
-import android.webkit.JsResult;
-import android.webkit.WebChromeClient;
-import android.webkit.WebSettings;
-import android.webkit.WebView;
-import android.webkit.WebViewClient;
+import android.webkit.*;
 import android.widget.Toast;
-
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
-
 import com.zjxf.ky_app.utils.StatusBarUtils;
 
 import static android.webkit.WebSettings.LayoutAlgorithm.SINGLE_COLUMN;
@@ -90,11 +84,17 @@ public class MainActivity extends AppCompatActivity implements KeyEvent.Callback
         }
         inquestWb.setWebChromeClient(new WebChromeClient() {
             @Override
+            public void onReceivedIcon(WebView view, Bitmap icon) {
+                super.onReceivedIcon(view, icon);
+
+            }
+            @Override
             public void onGeolocationPermissionsShowPrompt(String origin, GeolocationPermissions.Callback callback) {
                 callback.invoke(origin, true, false);
                 super.onGeolocationPermissionsShowPrompt(origin, callback);
             }
         });
+
         inquestWb.addJavascriptInterface(new JavaScriptInterface(this), "zjxf");
         inquestWb.loadUrl("file:///android_asset/html/login.html");
     }
