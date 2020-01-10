@@ -1,462 +1,564 @@
 <!DOCTYPE html>
 <html lang="zh">
 
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<meta http-equiv="X-UA-Compatible" content="ie=edge" />
-		<title>添加勘验数据（图片、视频、音频）</title>
-		<!-- 定位开始 -->
-		<!-- <link rel="stylesheet" href="https://a.amap.com/jsapi_demos/static/demo-center/css/demo-center.css" /> -->
-		<!-- 定位结束 -->
-		<link rel="stylesheet" type="text/css" href="../css/bootstrap.css" />
-		<link rel="stylesheet" href="../css/selectpeople.css">
-		<link rel="stylesheet" type="text/css" href="../css/addcase.css" />
-		<link rel="stylesheet" type="text/css" href="../css/addsoil.css" />
-		<link href="../plugs/iCheck/skins/all.css" rel="stylesheet" type="text/css"/>
-		<script src="../js/jquery.min.js"></script>
-		<script src="../plugs/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
-		<script src="../js/jquery.cookie.js"></script>
-		<script type="text/javascript" src="https://webapi.amap.com/maps?v=1.4.14&key=faa32b169482498e88e4ee58b4942c7a"></script>
-		<script src="http://webapi.amap.com/maps?v=1.4.14&key=faa32b169482498e88e4ee58b4942c7a&plugin=AMap.Geocoder"></script>
-		<script src="../plugs/iCheck/icheck.js"></script>
-		<script src="../js/common.js"></script>
-	</head>
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+    <title>添加勘验数据（图片、视频、音频）</title>
+    <!-- 定位开始 -->
+    <!-- <link rel="stylesheet" href="https://a.amap.com/jsapi_demos/static/demo-center/css/demo-center.css" /> -->
+    <!-- 定位结束 -->
+    <link rel="stylesheet" type="text/css" href="../css/bootstrap.css"/>
+    <link rel="stylesheet" href="../css/selectpeople.css">
+    <link rel="stylesheet" type="text/css" href="../css/addcase.css"/>
+    <link rel="stylesheet" type="text/css" href="../css/addsoil.css"/>
+    <link rel="stylesheet" href="../plugs/layui/layui.css">
+    <link href="../plugs/iCheck/skins/all.css" rel="stylesheet" type="text/css"/>
+    <script src="../js/jquery.min.js"></script>
+    <script src="../plugs/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+    <script src="../js/jquery.cookie.js"></script>
+    <script type="text/javascript"
+            src="https://webapi.amap.com/maps?v=1.4.14&key=faa32b169482498e88e4ee58b4942c7a"></script>
+    <script src="http://webapi.amap.com/maps?v=1.4.14&key=faa32b169482498e88e4ee58b4942c7a&plugin=AMap.Geocoder"></script>
+    <script src="../plugs/iCheck/icheck.js"></script>
+    <script src="../js/common.js"></script>
+    <script src="../plugs/layui/layui.all.js"></script>
+</head>
 
-	<body>
-		<div id='allmap' style="display: none;"></div>
-		<input type="text" id="lat" value="" style="display: none;">
-		<input type="text" id="lng" value="" style="display: none;">
-		<div class="wrapper">
-			<div class="one">
-				<div class="title">
-					<img src="../img/return.png" onclick="javascript:history.back(-1);"/>
-					<span class="t-text">图片</span>
-					<img src="../img/phone.png"/>
-				</div>
-				<div class="content">
-					<div class="jiange"></div>
-					<div class="databox">
-						<div class="frombox">
-							<div class="xing">*</div>
-							<div class="fromleft">取证设备</div>
-							<div class="fromright">
-								<input type="text" placeholder="请输入取证设备">
-							</div>
-						</div>
-						<div class="frombox">
-							<div class="xing">*</div>
-							<div class="fromleft">取证人</div>
-							<div class="fromright">
-								<input type="text" placeholder="请选择人" disabled name="evidence" id="evidenceUserId">
-								<img src="../img/right.png" alt="" class="jump jumpone">
-							</div>
-						</div>
-						<div class="frombox">
-							<div class="fromleft">协同取证人</div>
-							<div class="fromright">
-								<input type="text" placeholder="请选择人" disabled value="" name="Coordination" id="togetherEvidenceUserId">
-								<img src="../img/right.png" alt="" class="jump jumptwo">
-							</div>
-						</div>
-						<div class="frombox">
-							<div class="xing">*</div>
-							<div class="fromleft minheight">取证地点</div>
-							<div class="fromright">
-								<textarea type="text" placeholder="请输入取证地点" class="inputcss address map" name="quzheng" onpropertychange="if(this.scrollHeight>60)this.style.height=(this.scrollHeight+'px')" oninput="this.style.height='60px';if(this.scrollHeight>60)this.style.height=(this.scrollHeight-20+'px');"></textarea>
-								<img src="../img/place.png" alt="" class="jump dw" id="openMap">
-							</div>
-						</div>
-						<div class="frombox">
-							<div class="xing">*</div>
-							<div class="fromleft">取证说明</div>
-							<div class="fromright">
-								<textarea class="Explaintexts" placeholder="简单说说行程安排和同伴的要求吧..."></textarea>
-							</div>
-						</div>
-					</div>
+<body>
+<div id='allmap' style="display: none;"></div>
+<input type="text" id="lat" value="" style="display: none;">
+<input type="text" id="lng" value="" style="display: none;">
+<div class="wrapper">
+    <div class="one">
+        <div class="title">
+            <img src="../img/return.png" onclick="javascript:history.back(-1);"/>
+            <span class="t-text">图片</span>
+            <img src="../img/phone.png"/>
+        </div>
+        <div class="content">
+            <div class="jiange"></div>
+            <div class="databox">
+                <div class="frombox">
+                    <div class="xing">*</div>
+                    <div class="fromleft">取证设备</div>
+                    <div class="fromright">
+                        <select name="" id="equipment" onchange="changeEquipment(this)">
+                        </select>
+                    </div>
+                </div>
+                <div class="frombox">
+                    <div class="xing">*</div>
+                    <div class="fromleft">取证人</div>
+                    <div class="fromright">
+                        <input type="text" placeholder="请选择人" disabled name="evidence" id="evidenceUserId">
+                        <img src="../img/right.png" alt="" class="jump jumpone">
+                    </div>
+                </div>
+                <div class="frombox">
+                    <div class="fromleft">协同取证人</div>
+                    <div class="fromright">
+                        <input type="text" placeholder="请选择人" disabled value="" name="Coordination"
+                               id="togetherEvidenceUserId">
+                        <img src="../img/right.png" alt="" class="jump jumptwo">
+                    </div>
+                </div>
+                <div class="frombox">
+                    <div class="xing">*</div>
+                    <div class="fromleft minheight">取证地点</div>
+                    <div class="fromright">
+                        <textarea type="text" placeholder="请输入取证地点" id="address" class="inputcss address map" name="quzheng"
+                                  onpropertychange="if(this.scrollHeight>60)this.style.height=(this.scrollHeight+'px')"
+                                  oninput="this.style.height='60px';if(this.scrollHeight>60)this.style.height=(this.scrollHeight-20+'px');"></textarea>
+                        <img src="../img/place.png" alt="" class="jump dw" id="openMap">
+                    </div>
+                </div>
+                <div class="frombox">
+                    <div class="xing">*</div>
+                    <div class="fromleft">取证说明</div>
+                    <div class="fromright">
+                        <textarea class="Explaintexts" placeholder="简单说说行程安排和同伴的要求吧..." id="explain"></textarea>
+                    </div>
+                </div>
+                <div class="frombox">
+                    <div class="xing">*</div>
+                    <div class="fromleft">图片数据</div>
+                    <div class="fromright">
+                        <ul class="flow-default" id="LAY_demo1"></ul>
+                    </div>
+                </div>
 
-					<!-- 表格开始 -->
-					<div class="buttonboxs" style="margin-top: 2.2rem;">
-						<button class="submit">提交</button>
-					</div>
-					<!-- 表格结束 -->
+            </div>
 
-				</div>
-			</div>
-			<div class="two" hidden>
-				<div class="title">
-					<!-- <img src="../img/return.png"  class="twoback"/> -->
-					<span class="twoback">取消</span>
-					<span class="t-text">选择</span>
-					<span class="confirm" onclick="addUserOne()">确定</span>
-				</div>
-				<div class="content">
-					<!-- 选项卡开始 -->
-					<ul class="nav nav-tabs lefts" id="departmentone">
-						<!--<li class="list active"><a href="#" data-target="#tab1" data-toggle="tab">刑事检察一部</a></li>-->
-						<!--<li class="list"><a href="#" data-target="#tab2" data-toggle="tab">刑事检察二部</a></li>-->
-						<!--<li class="list"><a href="#" data-target="#tab3" data-toggle="tab">刑事检察三部</a></li>-->
-					</ul>
-					<div class="tab-content rights" id="userone">
-						<!--<div class="tab-pane active" id="tab1">-->
-						<!--<ul class="rightcontent">-->
-						<!--<li class="rightli"><input type="radio" name="username"><span>李鑫伟</span></li>-->
-						<!--<li class="rightli"><input type="radio" name="username"><span>马国锋</span></li>-->
-						<!--<li class="rightli"><input type="radio" name="username"><span>周勤</span></li>-->
-						<!--<li class="rightli"><input type="radio" name="username"><span>房海旭</span></li>-->
-						<!--<li class="rightli"><input type="radio" name="username"><span>田永来</span></li>-->
-						<!--</ul>-->
-						<!--</div>-->
-						<!--<div class="tab-pane" id="tab2">-->
-						<!--<ul class="rightcontent">-->
-						<!--<li class="rightli"><input type="radio" name="username"><span>李鑫伟2</span></li>-->
-						<!--<li class="rightli"><input type="radio" name="username"><span>马国锋2</span></li>-->
-						<!--<li class="rightli"><input type="radio" name="username"><span>周勤2</span></li>-->
-						<!--<li class="rightli"><input type="radio" name="username"><span>房海旭2</span></li>-->
-						<!--<li class="rightli"><input type="radio" name="username"><span>田永来2</span></li>-->
-						<!--</ul>-->
-						<!--</div>-->
-						<!--<div class="tab-pane" id="tab3">-->
-						<!--<ul class="rightcontent">-->
-						<!--<li class="rightli"><input type="radio" name="username"><span>李鑫伟3</span></li>-->
-						<!--<li class="rightli"><input type="radio" name="username"><span>马国锋3</span></li>-->
-						<!--<li class="rightli"><input type="radio" name="username"><span>周勤3</span></li>-->
-						<!--<li class="rightli"><input type="radio" name="username"><span>房海旭3</span></li>-->
-						<!--<li class="rightli"><input type="radio" name="username"><span>田永来3</span></li>-->
-						<!--</ul>-->
-						<!--</div>-->
-					</div>
-					<!-- 选项卡结束 -->
-				</div>
-			</div>
-			<div class="three" hidden>
-				<div class="title">
-					<!-- <img src="../img/return.png"  class="twoback"/> -->
-					<span class="threeback">取消</span>
-					<span class="t-text">选择</span>
-					<span class="confirm" onclick="addUserTwo()">确定</span>
-				</div>
-				<div class="content">
-					<!-- 选项卡开始 -->
-					<ul class="nav nav-tabs lefts" id="departmenttwo">
-						<!--<li class="list active"><a href="#" data-target="#tab4" data-toggle="tab">tab1</a></li>-->
-						<!--<li class="list"><a href="#" data-target="#tab5" data-toggle="tab">tab2</a></li>-->
-						<!--<li class="list"><a href="#" data-target="#tab6" data-toggle="tab">tab3</a></li>-->
-					</ul>
-					<div class="tab-content rights" id="usertwo">
-						<!--<div class="tab-pane active" id="tab4">-->
-						<!--<ul class="rightcontent">-->
-						<!--<li class="rightli"><input type="checkbox" name="usernametwo"><span>李鑫伟</span></li>-->
-						<!--<li class="rightli"><input type="checkbox" name="usernametwo"><span>马国锋</span></li>-->
-						<!--<li class="rightli"><input type="checkbox" name="usernametwo"><span>周勤</span></li>-->
-						<!--<li class="rightli"><input type="checkbox" name="usernametwo"><span>房海旭</span></li>-->
-						<!--<li class="rightli"><input type="checkbox" name="usernametwo"><span>田永来</span></li>-->
-						<!--</ul>-->
-						<!--</div>-->
-						<!--<div class="tab-pane" id="tab5">-->
-						<!--<ul class="rightcontent">-->
-						<!--<li class="rightli"><input type="checkbox" name="usernametwo"><span>李鑫伟2</span></li>-->
-						<!--<li class="rightli"><input type="checkbox" name="usernametwo"><span>马国锋2</span></li>-->
-						<!--<li class="rightli"><input type="checkbox" name="usernametwo"><span>周勤2</span></li>-->
-						<!--<li class="rightli"><input type="checkbox" name="usernametwo"><span>房海旭2</span></li>-->
-						<!--<li class="rightli"><input type="checkbox" name="usernametwo"><span>田永来2</span></li>-->
-						<!--</ul>-->
-						<!--</div>-->
-						<!--<div class="tab-pane" id="tab6">-->
-						<!--<ul class="rightcontent">-->
-						<!--<li class="rightli"><input type="checkbox" name="usernametwo"><span>李鑫伟3</span></li>-->
-						<!--<li class="rightli"><input type="checkbox" name="usernametwo"><span>马国锋3</span></li>-->
-						<!--<li class="rightli"><input type="checkbox" name="usernametwo"><span>周勤3</span></li>-->
-						<!--<li class="rightli"><input type="checkbox" name="usernametwo"><span>房海旭3</span></li>-->
-						<!--<li class="rightli"><input type="checkbox" name="usernametwo"><span>田永来3</span></li>-->
-						<!--</ul>-->
-						<!--</div>-->
-					</div>
-					<!-- 选项卡结束 -->
-				</div>
-			</div>
-		</div>
-		<!--地图-->
-		<div id='container'></div>
-		<div class="info" hidden>
-			<h4 id='status'></h4>
-			<p id='result'></p>
-			<hr>
-			<p>由于众多浏览器已不再支持非安全域的定位请求，为保位成功率和精度，请升级您的站点到HTTPS。</p>
-		</div>
-	</body>
+            <!-- 表格开始 -->
+            <div class="buttonboxs" style="margin-top: 2.2rem;">
+                <button class="submit" onclick="saveEvidenceMedia()">提交</button>
+            </div>
+            <!-- 表格结束 -->
 
-	<!-- 地图 -->
-	<link rel="stylesheet" href="http://cache.amap.com/lbs/static/main.css?v=1.0?v=1.0" />
-	<script type="text/javascript">
-		
-		// $(".submit").click(function() {
-		// 	window.location.href = "obtain.html";
-		// })
-		$(".jumpone").click(function () {
-			$(".one").hide();
-			$(".three").hide();
-			$(".two").show();
-		})
-		$(".jumptwo").click(function () {
-			$(".one").hide();
-			$(".two").hide();
-			$(".three").show();
-		})
-		$(".twoback").click(function () {
-			$(".one").show();
-			$(".two").hide();
-			$(".three").hide();
-		})
-		$(".threeback").click(function () {
-			$(".one").show();
-			$(".two").hide();
-			$(".three").hide();
-		})
-		$(function() {
-			setTimeout(function () {
-				//获取取证人员
-				getPerson()
-				setheight();
-				map();
-				var people = $.cookie('people');
-				$("input[name='evidence']").val(people);
-				var peopletwo = $.cookie('peopletwo');
-				$("input[name='Coordination']").val(peopletwo);
-			}, 300);
-		});
-		$(window).resize(function() {
-			setheight();
-			map();
-		});
+        </div>
+    </div>
+    <div class="two" hidden>
+        <div class="title">
+            <!-- <img src="../img/return.png"  class="twoback"/> -->
+            <span class="twoback">取消</span>
+            <span class="t-text">选择</span>
+            <span class="confirm" onclick="addUserOne()">确定</span>
+        </div>
+        <div class="content">
+            <!-- 选项卡开始 -->
+            <ul class="nav nav-tabs lefts" id="departmentone">
+            </ul>
+            <div class="tab-content rights" id="userone">
+            </div>
+            <!-- 选项卡结束 -->
+        </div>
+    </div>
+    <div class="three" hidden>
+        <div class="title">
+            <!-- <img src="../img/return.png"  class="twoback"/> -->
+            <span class="threeback">取消</span>
+            <span class="t-text">选择</span>
+            <span class="confirm" onclick="addUserTwo()">确定</span>
+        </div>
+        <div class="content">
+            <!-- 选项卡开始 -->
+            <ul class="nav nav-tabs lefts" id="departmenttwo">
+                <!--<li class="list active"><a href="#" data-target="#tab4" data-toggle="tab">tab1</a></li>-->
+                <!--<li class="list"><a href="#" data-target="#tab5" data-toggle="tab">tab2</a></li>-->
+                <!--<li class="list"><a href="#" data-target="#tab6" data-toggle="tab">tab3</a></li>-->
+            </ul>
+            <div class="tab-content rights" id="usertwo">
+                <!--<div class="tab-pane active" id="tab4">-->
+                <!--<ul class="rightcontent">-->
+                <!--<li class="rightli"><input type="checkbox" name="usernametwo"><span>李鑫伟</span></li>-->
+                <!--<li class="rightli"><input type="checkbox" name="usernametwo"><span>马国锋</span></li>-->
+                <!--<li class="rightli"><input type="checkbox" name="usernametwo"><span>周勤</span></li>-->
+                <!--<li class="rightli"><input type="checkbox" name="usernametwo"><span>房海旭</span></li>-->
+                <!--<li class="rightli"><input type="checkbox" name="usernametwo"><span>田永来</span></li>-->
+                <!--</ul>-->
+                <!--</div>-->
+                <!--<div class="tab-pane" id="tab5">-->
+                <!--<ul class="rightcontent">-->
+                <!--<li class="rightli"><input type="checkbox" name="usernametwo"><span>李鑫伟2</span></li>-->
+                <!--<li class="rightli"><input type="checkbox" name="usernametwo"><span>马国锋2</span></li>-->
+                <!--<li class="rightli"><input type="checkbox" name="usernametwo"><span>周勤2</span></li>-->
+                <!--<li class="rightli"><input type="checkbox" name="usernametwo"><span>房海旭2</span></li>-->
+                <!--<li class="rightli"><input type="checkbox" name="usernametwo"><span>田永来2</span></li>-->
+                <!--</ul>-->
+                <!--</div>-->
+                <!--<div class="tab-pane" id="tab6">-->
+                <!--<ul class="rightcontent">-->
+                <!--<li class="rightli"><input type="checkbox" name="usernametwo"><span>李鑫伟3</span></li>-->
+                <!--<li class="rightli"><input type="checkbox" name="usernametwo"><span>马国锋3</span></li>-->
+                <!--<li class="rightli"><input type="checkbox" name="usernametwo"><span>周勤3</span></li>-->
+                <!--<li class="rightli"><input type="checkbox" name="usernametwo"><span>房海旭3</span></li>-->
+                <!--<li class="rightli"><input type="checkbox" name="usernametwo"><span>田永来3</span></li>-->
+                <!--</ul>-->
+                <!--</div>-->
+            </div>
+            <!-- 选项卡结束 -->
+        </div>
+    </div>
+</div>
+<!--地图-->
+<div id='container'></div>
+<div class="info" hidden>
+    <h4 id='status'></h4>
+    <p id='result'></p>
+    <hr>
+    <p>由于众多浏览器已不再支持非安全域的定位请求，为保位成功率和精度，请升级您的站点到HTTPS。</p>
+</div>
+</body>
 
-		function setheight() {
-			var h1 = $(window).height();
-			var h2 = $(".title").height();
-			var h3 = h1 - h2;
-			$(".wrapper").css("height", h1);
-			$(".content").css("height", h3);
-		}
+<!-- 地图 -->
+<link rel="stylesheet" href="http://cache.amap.com/lbs/static/main.css?v=1.0?v=1.0"/>
+<script type="text/javascript">
+    function getData(equipment_id) {
+        layui.use('flow', function () {
+            $("#LAY_demo1").empty();
+            var flow = layui.flow;
+            flow.load({
+                elem: '#LAY_demo1' //流加载容器
+                , scrollElem: '#LAY_demo1' //滚动条所在元素，一般不用填，此处只是演示需要。
+                , done: function (page, next) { //执行下一页的回调
+                    let result = $.postData('/apis/app/case/getMediaData', {
+                        pagenum: page,
+                        pagesize: 4,
+                        equipment_id: equipment_id,
+                        equipment_support_img: 'True'
+                    })
+                    console.log(result)
+                    let data = result.data;
+                    var lis = [];
+                    if (result.status) {
+                        let total = data.total;
+                        let rows=data.res
+                        for (let key in rows) {
+                            lis.push(
+                                '<li>' +
+                                '<div class="boximg">' +
+                                '<img src="http://i1.sinaimg.cn/ent/d/2008-06-04/U105P28T3D2048907F326DT20080604225106.jpg"><input type="checkbox" name="picture" value="http://i1.sinaimg.cn/ent/d/2008-06-04/U105P28T3D2048907F326DT20080604225106.jpg" class="selectcheck">' +
+                                '</div>' +
+                                '<div class="time">'+rows[key].timeupdate.substring(0,10)+'</div>' +
+                                '</li>')
+                        }
+                        //执行下一页渲染，第二参数为：满足“加载更多”的条件，即后面仍有分页
+                        //pages为Ajax返回的总页数，只有当前页小于总页数的情况下，才会继续出现加载更多
+                        next(lis.join(''), page < total/4); //假设总页数为 10
+                        // icjeck
+                        $('input').iCheck({
+                            checkboxClass: 'icheckbox_minimal-blue',
+                            radioClass: 'iradio_minimal-blue',
+                            increaseArea: '20%' // optional
+                        });
+                    } else {
+                        next(lis.join(''), false); //假设总页数为 10
+                    }
 
+                }
+            });
+        })
+    }
 
-		//选中取证人
-		let evidenceUserId=null;
-		function addUserOne() {
-			evidenceUserId=$("input:radio[name='username']:checked").val()
-			$("#evidenceUserId").val($("input:radio[name='username']:checked").attr('username'));
-			$(".one").show();
-			$(".two").hide();
-			$(".three").hide();
-		}
-		//选中共同取证人
-		let togetherEvidenceUserId='';
-		let togetherEvidenceUserName="";
-		function addUserTwo() {
-			togetherEvidenceUserId="";
-			togetherEvidenceUserName="";
-			$("input[name=usernametwo]:checkbox").each(function(){
-				if(true == $(this).is(':checked')){
-					togetherEvidenceUserId+=$(this).val()+",";
-					togetherEvidenceUserName+=$(this).attr('username')+",";
-				}
-			});
-			togetherEvidenceUserId=togetherEvidenceUserId.substring(0,togetherEvidenceUserId.length-1);
-			togetherEvidenceUserName=togetherEvidenceUserName.substring(0,togetherEvidenceUserName.length-1)
-			$("#togetherEvidenceUserId").val(togetherEvidenceUserName)
-			$(".one").show();
-			$(".two").hide();
-			$(".three").hide();
-		}
-		//获取所有取证人员
-		function getPerson() {
-			let result = $.postData('/apis/app/case/findUser', {})
-			if (result.status) {
-				let data = result.data;
-				let departmentone = '';
-				let departmenttwo = '';
-				let userone = '';
-				let usertwo = '';
-				$(data).each(function (index, obj) {
-					let userlist = obj.roUserList;
-					let classList = 'list';
-					let classTab = 'tab-pane';
-					if (index == 0) {
-						classList = 'list active'
-						classTab = 'tab-pane active';
-					}
-					departmentone += '<li class="' + classList + '"><a href="#" data-target="#one' + obj.departmentId + '" data-toggle="tab">' + obj.departmentName + '</a></li>';
-					departmenttwo += '<li class="' + classList + '"><a href="#" data-target="#two' + obj.departmentId + '" data-toggle="tab">' + obj.departmentName + '</a></li>';
-					let userlistone = '';
-					let userlisttwo = '';
-					$(userlist).each(function (i, user) {
-						userlistone += '<li class="rightli"><input type="radio" value="'+user.userId+'" name="username" username="'+user.userName+'"><span>'+user.userName+'</span></li>';
-						userlisttwo += '<li class="rightli"><input type="checkbox" value="'+user.userId+'" name="usernametwo" username="'+user.userName+'"><span>'+user.userName+'</span></li>';
-					})
-					userone += '<div class="' + classTab + '" id="one' + obj.departmentId + '">\n' +
-							'                    <ul class="rightcontent">\n' +
-							userlistone +
-							'                    </ul>\n' +
-							'                </div>';
-					usertwo += '<div class="'+classTab+'" id="two'+obj.departmentId+'">\n' +
-							'                    <ul class="rightcontent">\n' +
-							userlisttwo +
-							'                    </ul>\n' +
-							'                </div>';
-				})
-				$("#departmentone").html(departmentone)
-				$("#userone").html(userone)
-				$("#departmenttwo").html(departmenttwo)
-				$("#usertwo").html(usertwo)
-				// icjeck
-				$('input').iCheck({
-					checkboxClass: 'icheckbox_minimal-blue',
-					radioClass: 'iradio_minimal-blue',
-					increaseArea: '20%' // optional
-				});
-			} else {
-				$.showToast(result.msg)
-			}
-			console.log(result)
-		}
-		// 地图定位
-		/*定位高德地图*/
-		function map() {
-			var map = new AMap.Map('container', {
-				resizeEnable: true
-			});
-			AMap.plugin('AMap.Geolocation', function() {
-				var geolocation = new AMap.Geolocation({
-					enableHighAccuracy: true, //是否使用高精度定位，默认:true
-					timeout: 10000, //超过10秒后停止定位，默认：5s
-					buttonPosition: 'RB', //定位按钮的停靠位置
-					buttonOffset: new AMap.Pixel(10, 20), //定位按钮与设置的停靠位置的偏移量，默认：Pixel(10, 20)
-					zoomToAccuracy: true, //定位成功后是否自动调整地图视野到定位点
-				});
-				map.addControl(geolocation);
-				geolocation.getCurrentPosition(function(status, result) {
-					if(status == 'complete') {
-						onComplete(result)
+    // $(".submit").click(function() {
+    // 	window.location.href = "obtain.html";
+    // })
+    $(".jumpone").click(function () {
+        $(".one").hide();
+        $(".three").hide();
+        $(".two").show();
+    })
+    $(".jumptwo").click(function () {
+        $(".one").hide();
+        $(".two").hide();
+        $(".three").show();
+    })
+    $(".twoback").click(function () {
+        $(".one").show();
+        $(".two").hide();
+        $(".three").hide();
+    })
+    $(".threeback").click(function () {
+        $(".one").show();
+        $(".two").hide();
+        $(".three").hide();
+    })
+    $(function () {
+        setTimeout(function () {
+            //获取取证人员
+            getPerson()
+            //获取设备列表
+            getPictureEquipments();
+            setheight();
+            map();
+            var people = $.cookie('people');
+            $("input[name='evidence']").val(people);
+            var peopletwo = $.cookie('peopletwo');
+            $("input[name='Coordination']").val(peopletwo);
+        }, 300);
+    });
+    $(window).resize(function () {
+        setheight();
+        map();
+    });
 
-					} else {
-						onError(result)
-					}
-				});
-			});
-			//解析定位结果
-			function onComplete(data) {
-				document.getElementById('status').innerHTML = '定位成功'
-				var str = [];
-				str.push('定位结果：' + data.position);
-				str.push('定位类别：' + data.location_type);
-				if(data.accuracy) {
-					str.push('精度：' + data.accuracy + ' 米');
-				} //如为IP精确定位结果则没有精度信息
-				str.push('是否经过偏移：' + (data.isConverted ? '是' : '否'));
-				var address = data.addressComponent;
-				var dw = data.formattedAddress;
-				str.push("地点名称：" + address.city);
-				str.push("地点名称：" + data.formattedAddress);
-				document.getElementById('result').innerHTML = str.join('<br>');
-				$(".map").val(dw);
-			}
+    function setheight() {
+        var h1 = $(window).height();
+        var h2 = $(".title").height();
+        var h3 = h1 - h2;
+        $(".wrapper").css("height", h1);
+        $(".content").css("height", h3);
+    }
 
-			//点击地图时间处理  
-			function showInfo(e) {
-				document.getElementById('lng').value = e.point.lng;
-				document.getElementById('lat').value = e.point.lat;
-				geoc.getLocation(e.point, function(rs) {
-					var addComp = rs.addressComponents;
-					var address = addComp.province + addComp.city + addComp.district + addComp.street + addComp.streetNumber;
-					document.getElementById('allmap').style.display = 'none';
-					$('html,body').css('overflow', 'auto');
-					$('.address').val(address);
-				});
-				addMarker(e.point);
-			}
+    //选取图片设备列表
+    function getPictureEquipments() {
+        var result = $.postData('/apis/app/case/findAllPictureEquipment', {equipment_support_img:'True',pagenum:1,pagesize:100})
+        console.log(result);
+        if (result.status) {
+            var data = result.data;
+            let str = '<option value="0">请选择取证设备</option>';
+            for (let key in data) {
+                str += '<option value="' + data[key]._id + '">' + data[key].equipment_name + '</option>';
+            }
+            $("#equipment").html(str);
+        } else {
+            $.showToast(result.msg)
+        }
+    }
 
-			//解析定位错误信息
-			function onError(data) {
+    //设备名称和id
+    let equipment = "";
+    let equipment_id = "";
 
-			}
+    function changeEquipment(obj) {
+        if ($(obj).val() != '0') {
+            equipment_id = $(obj).val()
+            equipment = $(obj).find("option:selected").text()
+            if (equipment_id != '0') {
+                getData(equipment_id)
+            }
+        }
+    }
+    //提交数据
+    function saveEvidenceMedia(){
+        let caseId=$.getUrlParam("id");
+        let surveyTypeId=$.getUrlParam('type_id')
+        if(equipment_id==""||equipment_id=="0"){
+            $.showToast("请选择设备列表并选择数据");
+            return
+        }
+        let imgUrls="";
+        $("input[name=picture]:checkbox").each(function () {
+            if (true == $(this).is(':checked')) {
+                imgUrls += $(this).val() + ",";
+            }
+        });
+        let address=$("#address").val();
+        let explain=$("#explain").val();
+        let param={
+            equipment:equipment,
+            evidenceUserId:evidenceUserId,
+            togetherEvidenceUserId:togetherEvidenceUserId,
+            address:address,
+            explain:explain,
+            caseId:caseId,
+            imgUrls:imgUrls,
+            equipmentCode:equipment_id,
+            surveyTypeId:surveyTypeId
+        }
+        let result=$.postData('/apis/app/case/saveEvidenceTwo',param)
+        if(result.status){
+            $.showToast("提交成功")
+            window.location.go(-1);
+        }else {
+            $.showToast(result.msg);
+        }
+    }
+    //选中取证人
+    let evidenceUserId = null;
+    function addUserOne() {
+        evidenceUserId = $("input:radio[name='username']:checked").val()
+        $("#evidenceUserId").val($("input:radio[name='username']:checked").attr('username'));
+        $(".one").show();
+        $(".two").hide();
+        $(".three").hide();
+    }
 
-			//初始化地图对象，加载地图
-			function loadmap(itemid) {
-				var map = new AMap.Map(itemid, {
-					resizeEnable: true
-				});
-				var options = {
-					'showButton': true, //是否显示定位按钮
-					'buttonPosition': 'LB', //定位按钮的位置
-					/* LT LB RT RB */
-					'buttonOffset': new AMap.Pixel(10, 20), //定位按钮距离对应角落的距离
-					'showMarker': true, //是否显示定位点
-					'markerOptions': { //自定义定位点样式，同Marker的Options
-						'offset': new AMap.Pixel(-18, -36),
-						'content': '<img src="https://a.amap.com/jsapi_demos/static/resource/img/user.png" style="width:36px;height:36px"/>'
-					},
-					'showCircle': false, //是否显示定位精度圈
-					'circleOptions': { //定位精度圈的样式
-						'strokeColor': '#0093FF',
-						'noSelect': true,
-						'strokeOpacity': 0.5,
-						'strokeWeight': 1,
-						'fillColor': '#02B0FF',
-						'fillOpacity': 0.25
-					}
-				}
-				AMap.plugin(["AMap.Geolocation"], function() {
-					var geolocation = new AMap.Geolocation(options);
-					map.setZoom(18);
-					map.addControl(geolocation);
-					geolocation.getCurrentPosition()
-				});
-				AMap.event.addListener(map, "click", function(e) {
-					point = e.lnglat;
-					var geocoder = new AMap.Geocoder({
-						"radius": 50
-					})
-					geocoder.getAddress(
-						[point],
-						function(status, result) {
-							var location_address = result.regeocodes[0].formattedAddress;
-							laodmap_amap();
-							$("textarea[name=quzheng]").val(location_address);
-						}
-					)
-				});
-			}
+    //选中共同取证人
+    let togetherEvidenceUserId = '';
+    let togetherEvidenceUserName = "";
 
-			function geocoder() {
-				console.log('havent');
-				var geocoder = new AMap.Geocoder();
-				console.log('will');
-				geocoder.getLocation(address[0], function(status, result) {
-					console.log(result);
-					if(status === 'complete' && result.info === 'OK') {
-						map[0].setZoomAndCenter(16, result);
-						map[0].addMarker(result);
-					} else {
-						alert("您选择地址没有解析到结果!");
-					}
-				});
-			}
+    function addUserTwo() {
+        togetherEvidenceUserId = "";
+        togetherEvidenceUserName = "";
+        $("input[name=usernametwo]:checkbox").each(function () {
+            if (true == $(this).is(':checked')) {
+                togetherEvidenceUserId += $(this).val() + ",";
+                togetherEvidenceUserName += $(this).attr('username') + ",";
+            }
+        });
+        togetherEvidenceUserId = togetherEvidenceUserId.substring(0, togetherEvidenceUserId.length - 1);
+        togetherEvidenceUserName = togetherEvidenceUserName.substring(0, togetherEvidenceUserName.length - 1)
+        $("#togetherEvidenceUserId").val(togetherEvidenceUserName)
+        $(".one").show();
+        $(".two").hide();
+        $(".three").hide();
+    }
 
-			function laodmap_amap() {
-				if(document.getElementById('allmap').style.display == 'none') {
-					document.getElementById('allmap').style.display = 'block';
-					$('html,body').css('overflow', 'hidden');
+    //获取所有取证人员
+    function getPerson() {
+        let result = $.postData('/apis/app/case/findUser', {})
+        if (result.status) {
+            let data = result.data;
+            let departmentone = '';
+            let departmenttwo = '';
+            let userone = '';
+            let usertwo = '';
+            $(data).each(function (index, obj) {
+                let userlist = obj.roUserList;
+                let classList = 'list';
+                let classTab = 'tab-pane';
+                if (index == 0) {
+                    classList = 'list active'
+                    classTab = 'tab-pane active';
+                }
+                departmentone += '<li class="' + classList + '"><a href="#" data-target="#one' + obj.departmentId + '" data-toggle="tab">' + obj.departmentName + '</a></li>';
+                departmenttwo += '<li class="' + classList + '"><a href="#" data-target="#two' + obj.departmentId + '" data-toggle="tab">' + obj.departmentName + '</a></li>';
+                let userlistone = '';
+                let userlisttwo = '';
+                $(userlist).each(function (i, user) {
+                    userlistone += '<li class="rightli"><input type="radio" value="' + user.userId + '" name="username" username="' + user.userName + '"><span>' + user.userName + '</span></li>';
+                    userlisttwo += '<li class="rightli"><input type="checkbox" value="' + user.userId + '" name="usernametwo" username="' + user.userName + '"><span>' + user.userName + '</span></li>';
+                })
+                userone += '<div class="' + classTab + '" id="one' + obj.departmentId + '">\n' +
+                    '                    <ul class="rightcontent">\n' +
+                    userlistone +
+                    '                    </ul>\n' +
+                    '                </div>';
+                usertwo += '<div class="' + classTab + '" id="two' + obj.departmentId + '">\n' +
+                    '                    <ul class="rightcontent">\n' +
+                    userlisttwo +
+                    '                    </ul>\n' +
+                    '                </div>';
+            })
+            $("#departmentone").html(departmentone)
+            $("#userone").html(userone)
+            $("#departmenttwo").html(departmenttwo)
+            $("#usertwo").html(usertwo)
+            // icjeck
+            $('input').iCheck({
+                checkboxClass: 'icheckbox_minimal-blue',
+                radioClass: 'iradio_minimal-blue',
+                increaseArea: '20%' // optional
+            });
+        } else {
+            $.showToast(result.msg)
+        }
+        console.log(result)
+    }
 
-					loadmap("allmap")
-				} else {
-					document.getElementById('allmap').style.display = 'none';
-					$('html,body').css('overflow', 'auto');
-				}
+    // 地图定位
+    /*定位高德地图*/
+    function map() {
+        var map = new AMap.Map('container', {
+            resizeEnable: true
+        });
+        AMap.plugin('AMap.Geolocation', function () {
+            var geolocation = new AMap.Geolocation({
+                enableHighAccuracy: true, //是否使用高精度定位，默认:true
+                timeout: 10000, //超过10秒后停止定位，默认：5s
+                buttonPosition: 'RB', //定位按钮的停靠位置
+                buttonOffset: new AMap.Pixel(10, 20), //定位按钮与设置的停靠位置的偏移量，默认：Pixel(10, 20)
+                zoomToAccuracy: true, //定位成功后是否自动调整地图视野到定位点
+            });
+            map.addControl(geolocation);
+            geolocation.getCurrentPosition(function (status, result) {
+                if (status == 'complete') {
+                    onComplete(result)
 
-			}
-			$(document).on('click', '.dw', laodmap_amap)
+                } else {
+                    onError(result)
+                }
+            });
+        });
 
-		}
-	</script>
+        //解析定位结果
+        function onComplete(data) {
+            document.getElementById('status').innerHTML = '定位成功'
+            var str = [];
+            str.push('定位结果：' + data.position);
+            str.push('定位类别：' + data.location_type);
+            if (data.accuracy) {
+                str.push('精度：' + data.accuracy + ' 米');
+            } //如为IP精确定位结果则没有精度信息
+            str.push('是否经过偏移：' + (data.isConverted ? '是' : '否'));
+            var address = data.addressComponent;
+            var dw = data.formattedAddress;
+            str.push("地点名称：" + address.city);
+            str.push("地点名称：" + data.formattedAddress);
+            document.getElementById('result').innerHTML = str.join('<br>');
+            $(".map").val(dw);
+        }
+
+        //点击地图时间处理
+        function showInfo(e) {
+            document.getElementById('lng').value = e.point.lng;
+            document.getElementById('lat').value = e.point.lat;
+            geoc.getLocation(e.point, function (rs) {
+                var addComp = rs.addressComponents;
+                var address = addComp.province + addComp.city + addComp.district + addComp.street + addComp.streetNumber;
+                document.getElementById('allmap').style.display = 'none';
+                $('html,body').css('overflow', 'auto');
+                $('.address').val(address);
+            });
+            addMarker(e.point);
+        }
+
+        //解析定位错误信息
+        function onError(data) {
+
+        }
+
+        //初始化地图对象，加载地图
+        function loadmap(itemid) {
+            var map = new AMap.Map(itemid, {
+                resizeEnable: true
+            });
+            var options = {
+                'showButton': true, //是否显示定位按钮
+                'buttonPosition': 'LB', //定位按钮的位置
+                /* LT LB RT RB */
+                'buttonOffset': new AMap.Pixel(10, 20), //定位按钮距离对应角落的距离
+                'showMarker': true, //是否显示定位点
+                'markerOptions': { //自定义定位点样式，同Marker的Options
+                    'offset': new AMap.Pixel(-18, -36),
+                    'content': '<img src="https://a.amap.com/jsapi_demos/static/resource/img/user.png" style="width:36px;height:36px"/>'
+                },
+                'showCircle': false, //是否显示定位精度圈
+                'circleOptions': { //定位精度圈的样式
+                    'strokeColor': '#0093FF',
+                    'noSelect': true,
+                    'strokeOpacity': 0.5,
+                    'strokeWeight': 1,
+                    'fillColor': '#02B0FF',
+                    'fillOpacity': 0.25
+                }
+            }
+            AMap.plugin(["AMap.Geolocation"], function () {
+                var geolocation = new AMap.Geolocation(options);
+                map.setZoom(18);
+                map.addControl(geolocation);
+                geolocation.getCurrentPosition()
+            });
+            AMap.event.addListener(map, "click", function (e) {
+                point = e.lnglat;
+                var geocoder = new AMap.Geocoder({
+                    "radius": 50
+                })
+                geocoder.getAddress(
+                    [point],
+                    function (status, result) {
+                        var location_address = result.regeocodes[0].formattedAddress;
+                        laodmap_amap();
+                        $("textarea[name=quzheng]").val(location_address);
+                    }
+                )
+            });
+        }
+
+        function geocoder() {
+            console.log('havent');
+            var geocoder = new AMap.Geocoder();
+            console.log('will');
+            geocoder.getLocation(address[0], function (status, result) {
+                console.log(result);
+                if (status === 'complete' && result.info === 'OK') {
+                    map[0].setZoomAndCenter(16, result);
+                    map[0].addMarker(result);
+                } else {
+                    alert("您选择地址没有解析到结果!");
+                }
+            });
+        }
+
+        function laodmap_amap() {
+            if (document.getElementById('allmap').style.display == 'none') {
+                document.getElementById('allmap').style.display = 'block';
+                $('html,body').css('overflow', 'hidden');
+
+                loadmap("allmap")
+            } else {
+                document.getElementById('allmap').style.display = 'none';
+                $('html,body').css('overflow', 'auto');
+            }
+
+        }
+
+        $(document).on('click', '.dw', laodmap_amap)
+
+    }
+</script>
 
 </html>

@@ -28,7 +28,12 @@ body {
     box-sizing: border-box;
 	position: relative;
 }
-
+.imgbox{
+    border: 1px solid #c3dafc;
+    border-radius: 4px;
+    overflow: hidden;
+    margin:15px 0;
+}
 .title .back{
     width: 0.32rem;
     height: 0.32rem;

@@ -5,15 +5,13 @@ import android.content.Context;
 import android.view.Gravity;
 import android.webkit.JavascriptInterface;
 import android.widget.Toast;
-
 import com.alibaba.fastjson.JSONObject;
 import com.zjxf.ky_app.utils.OkHttpUtils;
+import okhttp3.Response;
 
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
-
-import okhttp3.Response;
 
 /**
  * created with IntelliJ IDEA
@@ -45,11 +43,13 @@ public class JavaScriptInterface {
         if (param.keySet().size() != 0) {
             Map<String, Object> paramMap = paramJson.getJSONObject("param").getInnerMap();
             Response response = OkHttpUtils.getInstance().postDataAsJwt("http://192.168.0.139:8629" + url, paramMap, authToken);
+            //Response response = OkHttpUtils.getInstance().postDataAsJwt("http://192.168.0.153:8629" + url, paramMap, authToken);
             String responseStr = response.body().string();
             System.out.println(responseStr);
             return responseStr;
         } else {
             Response response = OkHttpUtils.getInstance().postDataAsJwt("http://192.168.0.139:8629" + url, new HashMap<String, Object>(), authToken);
+            //Response response = OkHttpUtils.getInstance().postDataAsJwt("http://192.168.0.153:8629" + url, new HashMap<String, Object>(), authToken);
             String responseStr = response.body().string();
             System.out.println(responseStr);
             return responseStr;
@@ -90,6 +90,7 @@ public class JavaScriptInterface {
         String url = paramJson.getString("url");
         Map<String, Object> paramMap = paramJson.getJSONObject("param").getInnerMap();
         Response response = OkHttpUtils.getInstance().postData("http://192.168.0.139:8629" + url, paramMap);
+        //Response response = OkHttpUtils.getInstance().postData("http://192.168.0.153:8629" + url, paramMap);
         JSONObject jsonObject = JSONObject.parseObject(response.body().string());
         if (jsonObject.getBoolean("status")) {
             authToken = jsonObject.getString("msg");

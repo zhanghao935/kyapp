@@ -169,17 +169,17 @@
             let contentStr = "";
             $.each(postData.data, function (i, obj) {
                 if (obj.surveyTypeName == "图片") {
-                    contentStr += "<div class=\"box-a video\">\n" +
+                    contentStr += "<div class=\"box-a type-img\" type-id='"+obj.id+"'>\n" +
                         "                    <p><img src=\"../img/img.png\"/></p>\n" +
                         "                    <p>" + obj.surveyTypeName + "</p>\n" +
                         "                </div>"
                 } else if (obj.surveyTypeName == "视频") {
-                    contentStr += "<div class=\"box-a video\">\n" +
+                    contentStr += "<div class=\"box-a type-video\" type-id='"+obj.id+"'>\n" +
                         "                    <p><img src=\"../img/video.png\"/></p>\n" +
                         "                    <p>" + obj.surveyTypeName + "</p>\n" +
                         "                </div>"
                 } else if (obj.surveyTypeName == "音频") {
-                    contentStr += "<div class=\"box-a video\">\n" +
+                    contentStr += "<div class=\"box-a type-audio\" type-id='"+obj.id+"'>\n" +
                         "                    <p><img src=\"../img/music.png\"/></p>\n" +
                         "                    <p>" + obj.surveyTypeName + "</p>\n" +
                         "                </div>"
@@ -207,14 +207,14 @@
             $(".water").click(function () {
                 window.location.href = "addSoil.html"
             });
-            $(".video").click(function () {
-                window.location.href = "addImg.html"
+            $(".type-img").click(function () {
+                window.location.href = "addImg.html?id="+$.getUrlParam("id")+"&type_id="+$(this).attr('type-id')
             });
         } else {
             $(".water").click(function () {
                 window.location.href = "air.html"
             });
-            $(".video").click(function () {
+            $(".type-img").click(function () {
                 window.location.href = "air.html"
             });
         }
