@@ -19,6 +19,16 @@
 		<script src="http://webapi.amap.com/maps?v=1.4.14&key=faa32b169482498e88e4ee58b4942c7a&plugin=AMap.Geocoder"></script>
 		<script src="../js/common.js"></script>
 		<script src="../js/bootstrap.js"></script>
+		<style>
+			.myimg{
+				width: 0.32rem;
+				height: 0.32rem;
+				cursor: pointer;
+				position: absolute;
+				top: 53%;
+				left: 0.2rem;
+			}
+		</style>
 	</head>
 
 	<body>
@@ -27,7 +37,7 @@
 		<input type="text" id="lng" value="" style="display: none;">
 		<div class="wrapper">
 			<div class="title">
-				<img src="../img/return.png" onclick="javascript:history.back(-1);"/>
+				<img src="../img/return.png" class="myimg" onclick="javascript:history.back(-1);"/>
 				<span class="t-text">水质清单</span>
 				<li class="dropdown" style="list-style: none;">
 					<a href="#" class="dropdown-toggle" data-toggle="dropdown">

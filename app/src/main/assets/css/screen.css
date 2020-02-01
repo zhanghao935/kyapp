@@ -1,0 +1,176 @@
+*{
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+.contentone{
+	position: relative;
+}
+.screen{
+	width: auto;
+	height: auto;
+	overflow: hidden;
+	position: absolute;
+	right: 0;
+	top: 0.9rem;
+	background: red;
+	background: #fff;
+	border: 1px solid #ebebeb;
+	display: none;
+	z-index: 99;
+}
+.screenli{
+	width: auto;
+	padding: 0.2rem 0.4rem;
+}
+/* 搜索 */
+.searchbox{
+	width: 100%;
+	height: 1rem;
+	padding: 0.3rem;
+	padding-bottom: 0;
+	position: relative;
+	margin-bottom:15px;
+}
+.searchtu{
+	width: 0.5rem;
+	height: 0.5rem;
+	position: absolute;
+	top: 45%;
+	right:0.5rem;
+}
+.search{
+	width: 100% !important;
+	height: 0.8rem !important;
+	border: 1px solid #ebebeb !important;
+	border-radius: 0.5rem !important;
+	outline: none !important;
+	padding-left: 0.5rem !important;
+	font-family: '微软雅黑';
+	font-size: 0.28rem !important;
+	color: #333 !important;
+}
+.search input::-webkit-input-placeholder{
+  color: #999;
+  font-size: 0.28rem;
+}
+.search input:-moz-placeholder{
+  color: #999;
+  font-size: 0.28rem;
+}
+.search input::-moz-placeholder{
+  color: #999;
+  font-size: 0.28rem;
+}
+.search input::-ms-input-placeholder{
+  color: #999;
+  font-size: 0.28rem;
+}
+.center{
+	width: 100%;
+	height: auto;
+	overflow: auto;
+	padding-bottom: 1rem;
+}
+/* 数据开始 */
+.resourcesbox .icheckbox_minimal-blue{
+
+}
+.resourcesbox{
+	width:100%;
+	height: auto;
+	overflow: hidden;
+	display: flex;
+	padding:0.3rem;
+	box-sizing: border-box;
+	position: relative;
+}
+.resourcesbox:hover{
+	background: #f1f1f1;
+}
+.Retraction{
+	width: 1.0rem;
+	height: 1.0rem;
+	background: pink;
+	border-radius: 0.2rem;
+	overflow: hidden;
+}
+.Retraction img{
+	width: 1rem;
+	height: 1rem;
+}
+.resources{
+	width: 85%;
+	flex: 1;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: flex-start;
+	align-items: center;
+	box-sizing: border-box;
+	padding: 0 0.3rem;
+}
+.titletext{
+	font-family: '微软雅黑';
+	font-size: 0.33rem;
+	color: #484a59;
+	display: block;
+	width: 100%;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+.time{
+	font-family: '微软雅黑';
+	font-size: 0.28rem;
+	color: rgba(72,74,89,.5);
+}
+.resourcesbox .icheckbox_minimal-blue{
+	position: absolute;
+	right: 0.5rem;
+	top: 45%;
+}
+.size{
+	margin-left: 0.2rem;
+}
+.contenttwo{
+	position: relative;
+}
+.btnbox{
+	width: 100%;
+	height: 1rem;
+	background: #438cf2;
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	display: flex;
+	box-sizing: border-box;
+}
+.upload{
+	flex: 1;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	color: #fff;
+	border-right: 1px solid #fff;
+	font-family: '微软雅黑';
+	font-size: 0.33rem;
+}
+.return{
+	flex: 1;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	color: #fff;
+	font-family: '微软雅黑';
+	font-size: 0.33rem;
+}
+/* 模态框 */
+.modal-body img{
+	width:100%;
+}
+.modal-body video{
+	width:100%;
+}
+.modal-dialog{
+	top:20%;
+}

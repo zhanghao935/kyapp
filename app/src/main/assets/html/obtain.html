@@ -184,18 +184,18 @@
                         "                    <p>" + obj.surveyTypeName + "</p>\n" +
                         "                </div>"
                 } else if (obj.surveyTypeName == "水") {
-                    contentStr += "<div class=\"box-a water\">\n" +
+                    contentStr += "<div class=\"box-a water\" type-id='"+obj.id+"'>\n" +
                         "                    <p><img src=\"../img/water.png\"/></p>\n" +
                         "                    <p>" + obj.surveyTypeName + "</p>\n" +
                         "                </div>"
                 } else if (obj.surveyTypeName == "土壤") {
-                    contentStr += "<div class=\"box-a water\">\n" +
+                    contentStr += "<div class=\"box-a soil\" type-id='"+obj.id+"'>\n" +
                         "                    <p><img src=\"../img/tu.png\"/></p>\n" +
                         "                    <p>" + obj.surveyTypeName + "</p>\n" +
                         "                </div>";
                 } else {
                     contentStr += "<div class=\"box-a water\">\n" +
-                        "                    <p><img src=\"../img/ty.png\"/></p>\n" +
+                        "                    <p><img src=\"../img/ty.png\" type-id='"+obj.id+"'/></p>\n" +
                         "                    <p>" + obj.surveyTypeName + "</p>\n" +
                         "                </div>";
                 }
@@ -205,10 +205,19 @@
 
         if ($.getUrlParam("type") == 1) {
             $(".water").click(function () {
-                window.location.href = "addSoil.html"
+                window.location.href = "addSoil.html?id="+$.getUrlParam("id")+"&type_id="+$(this).attr('type-id')
+            });
+            $(".soil").click(function () {
+                window.location.href = "addSoil.html?id="+$.getUrlParam("id")+"&type_id="+$(this).attr('type-id')
             });
             $(".type-img").click(function () {
                 window.location.href = "addImg.html?id="+$.getUrlParam("id")+"&type_id="+$(this).attr('type-id')
+            });
+            $(".type-audio").click(function () {
+                window.location.href = "addAudio.html?id="+$.getUrlParam("id")+"&type_id="+$(this).attr('type-id')
+            });
+            $(".type-video").click(function () {
+                window.location.href = "addVideo.html?id="+$.getUrlParam("id")+"&type_id="+$(this).attr('type-id')
             });
         } else {
             $(".water").click(function () {

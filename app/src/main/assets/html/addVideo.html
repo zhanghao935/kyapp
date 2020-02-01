@@ -26,6 +26,7 @@
     <script src="../plugs/iCheck/icheck.js"></script>
     <script src="../js/common.js"></script>
     <script src="../plugs/layui/layui.all.js"></script>
+    <script src="../js/mui.min.js"></script>
 </head>
 
 <body>
@@ -36,7 +37,7 @@
     <div class="contentone exhibition">
         <div class="title">
             <img src="../img/return.png" onclick="javascript:history.back(-1);"/>
-            <span class="t-text">图片</span>
+            <span class="t-text">视频</span>
             <img src="../img/phone.png"/>
         </div>
         <div class="content">
@@ -86,13 +87,12 @@
                 </div>
                 <div class="frombox">
                     <div class="xing">*</div>
-                    <div class="fromleft">图片<img src="../img/addimg.png" onclick="selectImg()"></div>
+                    <div class="fromleft">视频<img src="../img/addimg.png" onclick="selectImg()"></div>
                     <div class="fromright">
                         <ul class="flow-default" id="mycheck"></ul>
                     </div>
                 </div>
             </div>
-
             <!-- 表格开始 -->
             <div class="buttonboxs" style="margin: 0.5rem auto;">
                 <button class="submit" onclick="saveEvidenceMedia()">提交</button>
@@ -127,15 +127,45 @@
         <div class="content">
             <!-- 选项卡开始 -->
             <ul class="nav nav-tabs lefts" id="departmenttwo">
+                <!--<li class="list active"><a href="#" data-target="#tab4" data-toggle="tab">tab1</a></li>-->
+                <!--<li class="list"><a href="#" data-target="#tab5" data-toggle="tab">tab2</a></li>-->
+                <!--<li class="list"><a href="#" data-target="#tab6" data-toggle="tab">tab3</a></li>-->
             </ul>
             <div class="tab-content rights" id="usertwo">
+                <!--<div class="tab-pane active" id="tab4">-->
+                <!--<ul class="rightcontent">-->
+                <!--<li class="rightli"><input type="checkbox" name="usernametwo"><span>李鑫伟</span></li>-->
+                <!--<li class="rightli"><input type="checkbox" name="usernametwo"><span>马国锋</span></li>-->
+                <!--<li class="rightli"><input type="checkbox" name="usernametwo"><span>周勤</span></li>-->
+                <!--<li class="rightli"><input type="checkbox" name="usernametwo"><span>房海旭</span></li>-->
+                <!--<li class="rightli"><input type="checkbox" name="usernametwo"><span>田永来</span></li>-->
+                <!--</ul>-->
+                <!--</div>-->
+                <!--<div class="tab-pane" id="tab5">-->
+                <!--<ul class="rightcontent">-->
+                <!--<li class="rightli"><input type="checkbox" name="usernametwo"><span>李鑫伟2</span></li>-->
+                <!--<li class="rightli"><input type="checkbox" name="usernametwo"><span>马国锋2</span></li>-->
+                <!--<li class="rightli"><input type="checkbox" name="usernametwo"><span>周勤2</span></li>-->
+                <!--<li class="rightli"><input type="checkbox" name="usernametwo"><span>房海旭2</span></li>-->
+                <!--<li class="rightli"><input type="checkbox" name="usernametwo"><span>田永来2</span></li>-->
+                <!--</ul>-->
+                <!--</div>-->
+                <!--<div class="tab-pane" id="tab6">-->
+                <!--<ul class="rightcontent">-->
+                <!--<li class="rightli"><input type="checkbox" name="usernametwo"><span>李鑫伟3</span></li>-->
+                <!--<li class="rightli"><input type="checkbox" name="usernametwo"><span>马国锋3</span></li>-->
+                <!--<li class="rightli"><input type="checkbox" name="usernametwo"><span>周勤3</span></li>-->
+                <!--<li class="rightli"><input type="checkbox" name="usernametwo"><span>房海旭3</span></li>-->
+                <!--<li class="rightli"><input type="checkbox" name="usernametwo"><span>田永来3</span></li>-->
+                <!--</ul>-->
+                <!--</div>-->
             </div>
             <!-- 选项卡结束 -->
         </div>
     </div>
     <div class="contentone contenttwo" hidden>
         <div class="title">
-            <span id="datacount">已选0项</span>
+            <span>已选1项</span>
             <span class="t-text">数据管理</span>
             <img src="../img/more.png" class="more"/>
         </div>
@@ -151,6 +181,96 @@
                 <img src="../img/search.png" alt="" class='searchtu'>
             </div>
             <div class="center" id="LAY_demo1">
+                <!--<div class="resourcesbox">-->
+                <!--<div class="Retraction">-->
+                <!--<img src="../img/videoimg.png" alt="">-->
+                <!--</div>-->
+                <!--<div class="resources">-->
+                <!--<div class="titletext">x射线荧光光谱仪数据.jpg</div>-->
+                <!--<div class="time">2019-12-15 13:00:00 <span class="size">125kb</span></div>-->
+                <!--</div>-->
+                <!--<input type="checkbox" name="data" class="datacheck">-->
+                <!--</div>-->
+                <!--<div class="resourcesbox">-->
+                <!--<div class="Retraction">-->
+                <!--<img src="../img/audio.png" alt="">-->
+                <!--</div>-->
+                <!--<div class="resources">-->
+                <!--<div class="titletext">x射线荧光光谱仪数据.jpg</div>-->
+                <!--<div class="time">2019-12-15 13:00:00 <span class="size">125kb</span></div>-->
+                <!--</div>-->
+                <!--<input type="checkbox" name="data" class="datacheck">-->
+                <!--</div>-->
+                <!--<div class="resourcesbox">-->
+                <!--<div class="Retraction">-->
+                <!--<img src="../img/videoimg.png" alt="">-->
+                <!--</div>-->
+                <!--<div class="resources">-->
+                <!--<div class="titletext">x射线荧光光谱仪数据.jpg</div>-->
+                <!--<div class="time">2019-12-15 13:00:00 <span class="size">125kb</span></div>-->
+                <!--</div>-->
+                <!--<input type="checkbox" name="data" class="datacheck">-->
+                <!--</div>-->
+                <!--<div class="resourcesbox">-->
+                <!--<div class="Retraction">-->
+                <!--<img src="../img/audio.png" alt="">-->
+                <!--</div>-->
+                <!--<div class="resources">-->
+                <!--<div class="titletext">x射线荧光光谱仪数据.jpg</div>-->
+                <!--<div class="time">2019-12-15 13:00:00 <span class="size">125kb</span></div>-->
+                <!--</div>-->
+                <!--<input type="checkbox" name="data" class="datacheck">-->
+                <!--</div>-->
+                <!--<div class="resourcesbox">-->
+                <!--<div class="Retraction">-->
+                <!--<img src="../img/audio.png" alt="">-->
+                <!--</div>-->
+                <!--<div class="resources">-->
+                <!--<div class="titletext">x射线荧光光谱仪数据.jpg</div>-->
+                <!--<div class="time">2019-12-15 13:00:00 <span class="size">125kb</span></div>-->
+                <!--</div>-->
+                <!--<input type="checkbox" name="data" class="datacheck">-->
+                <!--</div>-->
+                <!--<div class="resourcesbox">-->
+                <!--<div class="Retraction">-->
+                <!--<img src="../img/videoimg.png" alt="">-->
+                <!--</div>-->
+                <!--<div class="resources">-->
+                <!--<div class="titletext">x射线荧光光谱仪数据.jpg</div>-->
+                <!--<div class="time">2019-12-15 13:00:00 <span class="size">125kb</span></div>-->
+                <!--</div>-->
+                <!--<input type="checkbox" name="data" class="datacheck">-->
+                <!--</div>-->
+                <!--<div class="resourcesbox">-->
+                <!--<div class="Retraction">-->
+                <!--<img src="../img/videoimg.png" alt="">-->
+                <!--</div>-->
+                <!--<div class="resources">-->
+                <!--<div class="titletext">x射线荧光光谱仪数据.jpg</div>-->
+                <!--<div class="time">2019-12-15 13:00:00 <span class="size">125kb</span></div>-->
+                <!--</div>-->
+                <!--<input type="checkbox" name="data" class="datacheck">-->
+                <!--</div>-->
+                <!--<div class="resourcesbox">-->
+                <!--<div class="Retraction">-->
+                <!--<img src="../img/videoimg.png" alt="">-->
+                <!--</div>-->
+                <!--<div class="resources">-->
+                <!--<div class="titletext">x射线荧光光谱仪数据.jpg</div>-->
+                <!--<div class="time">2019-12-15 13:00:00 <span class="size">125kb</span></div>-->
+                <!--</div>-->
+                <!--<input type="checkbox" name="data" class="datacheck">-->
+                <!--</div>-->
+                <!--<div class="resourcesbox">-->
+                <!--<div class="Retraction">-->
+                <!--<img src="../img/videoimg.png" alt="">-->
+                <!--</div>-->
+                <!--<div class="resources">-->
+                <!--<div class="titletext">x射线荧光光谱仪数据.jpg</div>-->
+                <!--<div class="time">2019-12-15 13:00:00 <span class="size">125kb</span></div>-->
+                <!--</div>-->
+                <!--<input type="checkbox" name="data" class="datacheck">-->
+                <!--</div>-->
             </div>
             <div class="btnbox">
                 <div class="upload">上传</div>
@@ -162,12 +282,14 @@
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                                aria-hidden="true">&times;</span></button>
                         <h4 class="modal-title" id="myModalLabel">x射线荧光光谱仪数据</h4>
                     </div>
                     <div class="modal-body">
-                         <img src="" alt="" id="myImg">
-                        <!--<video src="https://media.w3.org/2010/05/sintel/trailer.mp4" controls="controls" autoplay="autoplay"></video>-->
+                        <video id="myImg" src="https://vdn1.vzuu.com/LD/292b9a92-5d0e-11e9-82ef-0a580a4506a2.mp4?disable_local_cache=1&bu=http-com&expiration=1578903615&auth_key=1578903615-0-0-03d1aea394dbe960c997fb7a26261047&f=mp4&v=hw" controls="controls">
+
+                        </video>
                     </div>
                 </div>
             </div>
@@ -188,11 +310,6 @@
 <!-- 地图 -->
 <link rel="stylesheet" href="http://cache.amap.com/lbs/static/main.css?v=1.0?v=1.0"/>
 <script type="text/javascript">
-    $('input').iCheck({
-        checkboxClass: 'icheckbox_minimal-blue',
-        radioClass: 'iradio_minimal-blue',
-        increaseArea: '20%' // optional
-    });
     function getData(equipment_id) {
         layui.use('flow', function () {
             $("#LAY_demo1").empty();
@@ -205,7 +322,7 @@
                         pagenum: page,
                         pagesize: 4,
                         equipment_id: equipment_id,
-                        equipment_support: 'equipment_support_img'
+                        equipment_support: 'equipment_support_video'
                     })
                     console.log(result)
                     let data = result.data;
@@ -214,22 +331,15 @@
                         let total = data.total;
                         let rows = data.res
                         for (let key in rows) {
-                            // lis.push(
-                            //     '<li>' +
-                            //     '<div class="boximg">' +
-                            //     '<img src="http://i1.sinaimg.cn/ent/d/2008-06-04/U105P28T3D2048907F326DT20080604225106.jpg"><input type="checkbox" name="picture" value="http://i1.sinaimg.cn/ent/d/2008-06-04/U105P28T3D2048907F326DT20080604225106.jpg" class="selectcheck">' +
-                            //     '</div>' +
-                            //     '<div class="time">'+rows[key].timeupdate.substring(0,10)+'</div>' +
-                            //     '</li>')
-                            lis.push('<div class="resourcesbox" onclick="lookDetail(this)" data-src="http://i1.sinaimg.cn/ent/d/2008-06-04/U105P28T3D2048907F326DT20080604225106.jpg" data-fname="'+$(rows[key]).attr("record").fname+'">\n' +
+                            lis.push('<div class="resourcesbox" onclick="lookDetail(this)" data-src="http://134.175.170.197:8000' + rows[key].record.fileid + '" data-fname="' + rows[key].record.fname + '">\n' +
                                 '                    <div class="Retraction">\n' +
-                                '                        <img src="http://i1.sinaimg.cn/ent/d/2008-06-04/U105P28T3D2048907F326DT20080604225106.jpg" alt="">\n' +
+                                '                        <img src="../img/videoimg.png" alt="">\n' +
                                 '                    </div>\n' +
                                 '                    <div class="resources">\n' +
-                                '                        <div class="titletext">' + $(rows[key]).attr("record").fname + '</div>\n' +
+                                '                        <div class="titletext">' + rows[key].record.fname + '</div>\n' +
                                 '                        <div class="time">' + rows[key].timeupdate + ' <span class="size">125kb</span></div>\n' +
                                 '                    </div>\n' +
-                                '                    <input type="checkbox" name="picture" value="http://i1.sinaimg.cn/ent/d/2008-06-04/U105P28T3D2048907F326DT20080604225106.jpg" class="datacheck">\n' +
+                                '                    <input type="checkbox" name="picture" value="https://media.w3.org/2010/05/sintel/trailer.mp4" class="datacheck">\n' +
                                 '                </div>')
                         }
                         //执行下一页渲染，第二参数为：满足“加载更多”的条件，即后面仍有分页
@@ -250,32 +360,37 @@
         })
     }
 
-    function lookDetail(obj){
-       let src=$(obj).attr('data-src');
-       let fname=$(obj).attr('data-fname')
-        $("#myImg").attr("src",src)
+    let count = 0;
+    $('input:checkbox[name=picture]').on('ifChecked', function (event) {
+        count++;
+        $("#datacount").text("已选" + count + "项");
+    });
+    $('input:checkbox[name=picture]').on('ifUnchecked', function (event) {
+        count--;
+        $("#datacount").text("已选" + count + "项");
+    });
+
+    function lookDetail(obj) {
+        //let src = $(obj).attr('data-src');
+        let fname = $(obj).attr('data-fname')
+        //$("#myImg").attr('src',src)
+        //let sourceDom = $("<source src=\"" + src + "\">");
+        //$("#myImg").attr('src',src);
+        // 自动播放
+        // $("#myImg")[0].play()
         $("#myModalLabel").text(fname)
         $("#myModal").modal('show')
     }
-    let count = 0;
-    $('input[name="picture"][type="checkbox"]').on('ifChecked', function (event) {
-            count++;
-        $("#datacount").text("已选" + count + "项");
-    });
-    $("input[name='picture'][type='checkbox']").on('ifUnchecked', function (event) {
-            count--;
-        $("#datacount").text("已选" + count + "项");
-    });
+
     //选中文件确认
     $('.upload').click(function () {
         let lis = []
         $("input[name=picture]:checkbox").each(function () {
-            let _this=this
-            if (true == $(_this).is(':checked')) {
+            if (true == $(this).is(':checked')) {
                 lis.push(
                     '<li>' +
                     '<div class="boximg">' +
-                    '<img src="' + $(_this).val() + '">' +
+                    '<img src="../img/videoimg.png">' +
                     '</div>' +
                     '</li>');
             }
@@ -325,13 +440,6 @@
         $(".contenttwo").hide();
         $(".exhibition").show();
     })
-    // 弹出框
-    // var info = document.getElementById("info");
-    // $(".resourcesbox").addEventListener('tap', function() {
-    //     mui.alert('欢迎使用Hello MUI', 'Hello MUI', function() {
-    //         info.innerText = '你刚关闭了警告框';
-    //     });
-    // });
     $(function () {
         setTimeout(function () {
             //获取取证人员
@@ -362,7 +470,7 @@
     //选取图片设备列表
     function getPictureEquipments() {
         var result = $.postData('/apis/app/case/findAllPictureEquipment', {
-            equipment_support_img: 'True',
+            equipment_support_audio: 'True',
             pagenum: 1,
             pagesize: 100
         })
@@ -402,16 +510,12 @@
             $.showToast("请选择设备列表并选择数据");
             return
         }
-        let imgUrls = [];
+        let videoUrls = [];
         $("input[name=picture]:checkbox").each(function () {
             if (true == $(this).is(':checked')) {
-                imgUrls.push($(this).val());
+                videoUrls.push($(this).val());
             }
         });
-        if (imgUrls.length == 0) {
-            $.showToast("请勾选证据")
-            return
-        }
         let address = $("#address").val();
         let explain = $("#explain").val();
         let param = {
@@ -421,7 +525,7 @@
             address: address,
             explain: explain,
             caseId: caseId,
-            imgUrls: imgUrls,
+            videoUrls: videoUrls,
             equipmentCode: equipment_id,
             surveyTypeId: surveyTypeId
         }
@@ -436,6 +540,7 @@
 
     //选中取证人
     let evidenceUserId = null;
+
     function addUserOne() {
         evidenceUserId = $("input:radio[name='username']:checked").val()
         $("#evidenceUserId").val($("input:radio[name='username']:checked").attr('username'));
@@ -443,9 +548,11 @@
         $(".two").hide();
         $(".three").hide();
     }
+
     //选中共同取证人
     let togetherEvidenceUserId = '';
     let togetherEvidenceUserName = "";
+
     function addUserTwo() {
         togetherEvidenceUserId = "";
         togetherEvidenceUserName = "";

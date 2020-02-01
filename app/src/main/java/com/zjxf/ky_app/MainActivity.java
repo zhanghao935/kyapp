@@ -68,6 +68,8 @@ public class MainActivity extends AppCompatActivity implements KeyEvent.Callback
                 return Boolean.TRUE;
             }
         });
+        //硬件加速
+        inquestWb.setLayerType(View.LAYER_TYPE_SOFTWARE,null);
         //启用地理定位
         inquestWb.getSettings().setGeolocationEnabled(true);
         inquestWb.setWebChromeClient(new WebChromeClient() {
